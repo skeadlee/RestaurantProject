@@ -58,4 +58,12 @@ public class Customer {
     public void setBookings(ArrayList<Booking> bookings) {
         this.bookings = bookings;
     }
+
+    public void addLoyaltyPoints(int i){
+        setLoyaltyCard(loyaltyCard += i);
+    }
+
+    public void addBookings(Booking booking){
+        this.getBookings().add(booking);
+    }
 }
