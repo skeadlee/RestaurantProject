@@ -50,4 +50,12 @@ public class Customer {
     public void setLoyaltyCard(int loyaltyCard) {
         this.loyaltyCard = loyaltyCard;
     }
+
+    public ArrayList<Booking> getBookings() {
+        return bookings;
+    }
+
+    public void setBookings(ArrayList<Booking> bookings) {
+        this.bookings = bookings;
+    }
 }
