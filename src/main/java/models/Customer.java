@@ -1,11 +1,14 @@
 package models;
 
+import java.util.ArrayList;
+
 public class Customer {
 
     private int id;
     private String name;
     private int wallet;
     private int loyaltyCard;
+    private ArrayList<Booking> bookings;
 
     public Customer(){}
 
@@ -13,6 +16,7 @@ public class Customer {
         this.name = name;
         this.wallet = wallet;
         this.loyaltyCard = 0;
+        this.bookings = new ArrayList<Booking>();
     }
 
     public int getId() {
