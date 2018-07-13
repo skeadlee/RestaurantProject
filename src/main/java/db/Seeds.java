@@ -61,6 +61,12 @@ public class Seeds {
         DBHelper.save(booking4);
         DBHelper.save(booking5);
 
+        restaurant.makeBooking(booking1);
+        restaurant.makeBooking(booking2);
+        restaurant.makeBooking(booking3);
+        restaurant.makeBooking(booking4);
+        restaurant.makeBooking(booking5);
+
 
     }
 }

@@ -2,8 +2,10 @@ package models;
 
 import javax.persistence.*;
 import javax.persistence.Table;
+import java.awt.print.Book;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.GregorianCalendar;
 
 @Entity
 @Table(name="restaurants")
@@ -13,13 +15,14 @@ public class Restaurant {
     private String name;
     private ArrayList<Seating> tables;
     private Till till;
-    private Booking booking;
+    private ArrayList<Booking> bookings;
     private Customer customer;
 
     public Restaurant(String name) {
         this.name = name;
         this.tables = new ArrayList();
         this.till = new Till();
+        this.bookings = new ArrayList<>();
         makeTables();
     }
 
@@ -80,12 +83,12 @@ public class Restaurant {
 
 
     @OneToMany(mappedBy = "restaurant", fetch = FetchType.LAZY)
-    public Booking getBooking() {
-        return booking;
+    public ArrayList<Booking> getBooking() {
+        return bookings;
     }
 
-    public void setBooking(Booking booking) {
-        this.booking = booking;
+    public void setBookings(ArrayList<Booking> bookings) {
+        this.bookings = bookings;
     }
 
     @OneToMany(mappedBy = "restaurant", fetch = FetchType.LAZY)
@@ -96,4 +99,10 @@ public class Restaurant {
     public void setCustomer(Customer customer) {
         this.customer = customer;
     }
+
+public void makeBooking(Booking booking){
+            booking.takeBooking(booking.getDateTime(), booking.getCapacity(), booking.getCustomer(), booking.getSeating());
+            bookings.add(booking);
+        }
 }
+

@@ -56,4 +56,8 @@ public enum Seating {
     public void setBooking(Booking booking) {
         this.booking = booking;
     }
+
+    public void addCustomersToTable(Customer customer){
+        this.diners.add(customer);
+    }
 }

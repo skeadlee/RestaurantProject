@@ -72,6 +72,7 @@ public class Booking {
         this.customer = customer;
     }
 
+
     @Enumerated(value = EnumType.STRING)
     public Seating getSeating() {
         return seating;
@@ -100,7 +101,7 @@ public class Booking {
     }
 
     @ManyToOne
-    @JoinColumn(name="restuarant_id", nullable = false)
+    @JoinColumn(name = "restuarant_id", nullable = false)
     public Restaurant getRestaurant() {
         return restaurant;
     }
@@ -109,8 +110,13 @@ public class Booking {
         this.restaurant = restaurant;
     }
 
-    public void checkAvailability(GregorianCalendar dateTime, int capacity){
+    public void checkAvailability(GregorianCalendar dateTime, int capacity) {
 
     }
 
+    public void takeBooking(GregorianCalendar dateTime, int party, Customer customer, Seating table) {
+        if (table.getChairs() <= party) {
+            table.addCustomer(customer);
+        }
+    }
 }
