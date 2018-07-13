@@ -80,7 +80,5 @@ public class Booking {
         this.discountApplied = discountApplied;
     }
 
-    public void checkAvailability(GregorianCalendar dateTime, int capacity){
-        if(table.getDiners().size() < 1)
-    }
+
 }
