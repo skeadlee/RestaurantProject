@@ -1,9 +1,6 @@
 package models;
 
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.ArrayList;
 
 public enum Seating {
@@ -41,8 +38,9 @@ public enum Seating {
         this.diners.add(customers);
     }
 
-    @ManyToOne
-    @JoinColumn(name = "restaurant_id", nullable = false)
+    //@ManyToOne
+   // @JoinColumn(name = "restaurant_id", nullable = false)
+    @Enumerated(value = EnumType.STRING)
     public Restaurant getRestaurant() {
         return restaurant;
     }
@@ -51,7 +49,8 @@ public enum Seating {
         this.restaurant = restaurant;
     }
 
-    @OneToMany(mappedBy = "seating", fetch = FetchType.LAZY)
+    //@OneToMany(mappedBy = "seating", fetch = FetchType.LAZY)
+    @Enumerated(value = EnumType.STRING)
     public Booking getBooking() {
         return booking;
     }
