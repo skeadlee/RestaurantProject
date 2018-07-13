@@ -39,11 +39,6 @@ public class Till {
         this.amount = amount;
     }
 
-    public void increaseBalance(int bill){
-        this.amount = amount += bill;
-    }
-
-
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "till_id", nullable = false)
     public Restaurant getRestaurant() {
@@ -52,5 +47,9 @@ public class Till {
 
     public void setRestaurant(Restaurant restaurant) {
         this.restaurant = restaurant;
+    }
+
+    public void increaseBalance(int bill){
+        this.amount = amount += bill;
     }
 }
