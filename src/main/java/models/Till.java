@@ -2,6 +2,7 @@ package models;
 
 public class Till {
 
+    private int id;
     private int amount;
 
     public Till() {
@@ -9,6 +10,14 @@ public class Till {
 
     public Till(int amount) {
         this.amount = amount;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public int getAmount() {
