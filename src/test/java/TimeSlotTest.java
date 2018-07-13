@@ -1,4 +1,3 @@
-import models.TimeSlot;
 import org.junit.Before;
 
 public class TimeSlotTest {
