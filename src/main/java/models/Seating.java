@@ -2,17 +2,17 @@ package models;
 
 import java.util.ArrayList;
 
-public enum Table {
+public enum Seating {
 
-    TABLETWO(2, "Table for two"),
-    TABLEFOUR(4, "Table for four"),
-    TABLESIX(6, "Table for six");
+    TABLETWO(2, "Seating for two"),
+    TABLEFOUR(4, "Seating for four"),
+    TABLESIX(6, "Seating for six");
 
     private int chairs;
     private String name;
     private ArrayList<Customer> diners;
 
-    Table(int chairs, String name) {
+    Seating(int chairs, String name) {
 
         this.chairs = chairs;
         this.name = name;

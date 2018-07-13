@@ -1,13 +1,17 @@
 package models;
 
+import javax.persistence.*;
+import javax.persistence.Table;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+@Entity
+@Table(name="restaurants")
 public class Restaurant {
 
     private int id;
     private String name;
-    private ArrayList<Table> tables;
+    private ArrayList<Seating> tables;
     private Till till;
 
     public Restaurant(String name) {
@@ -17,6 +21,9 @@ public class Restaurant {
         setTables();
     }
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     public int getId() {
         return id;
     }
@@ -25,6 +32,7 @@ public class Restaurant {
         this.id = id;
     }
 
+    @Column(name="name")
     public String getName() {
         return name;
     }
@@ -33,14 +41,16 @@ public class Restaurant {
         this.name = name;
     }
 
-    public ArrayList<Table> getTables() {
+    @OneToMany(mappedBy="restaurant", fetch = FetchType.LAZY)
+    public ArrayList<Seating> getTables() {
         return tables;
     }
 
-    public void setTables(ArrayList<Table> tables) {
+    public void setTables(ArrayList<Seating> tables) {
         this.tables = tables;
     }
 
+    @OneToOne(mappedBy = "restaurant", fetch = FetchType.LAZY)
     public Till getTill() {
         return till;
     }
@@ -49,20 +59,23 @@ public class Restaurant {
         this.till = till;
     }
 
+    @OneToMany(mappedBy = "restaurant", fetch = FetchType.LAZY)
     public void setTables(){
-        Table table1 = Table.TABLETWO;
-        Table table2 = Table.TABLETWO;
-        Table table3 = Table.TABLETWO;
-        Table table4 = Table.TABLETWO;
-        Table table5 = Table.TABLETWO;
-        Table table6 = Table.TABLETWO;
-        Table table7 = Table.TABLEFOUR;
-        Table table8 = Table.TABLEFOUR;
-        Table table9 = Table.TABLEFOUR;
-        Table table10 = Table.TABLEFOUR;
-        Table table11 = Table.TABLESIX;
-        Table table12 = Table.TABLESIX;
-        this.tables = new ArrayList<Table>(Arrays.asList(table1, table2, table3, table4,
-                table5, table6, table7, table8, table9, table10, table11, table12));
+        Seating seating1 = Seating.TABLETWO;
+        Seating seating2 = Seating.TABLETWO;
+        Seating seating3 = Seating.TABLETWO;
+        Seating seating4 = Seating.TABLETWO;
+        Seating seating5 = Seating.TABLETWO;
+        Seating seating6 = Seating.TABLETWO;
+        Seating seating7 = Seating.TABLEFOUR;
+        Seating seating8 = Seating.TABLEFOUR;
+        Seating seating9 = Seating.TABLEFOUR;
+        Seating seating10 = Seating.TABLEFOUR;
+        Seating seating11 = Seating.TABLESIX;
+        Seating seating12 = Seating.TABLESIX;
+        this.tables = new ArrayList<Seating>(Arrays.asList(seating1, seating2, seating3, seating4,
+                seating5, seating6, seating7, seating8, seating9, seating10, seating11, seating12));
     }
+
+
 }

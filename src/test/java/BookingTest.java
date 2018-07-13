@@ -1,6 +1,6 @@
 import models.Booking;
 import models.Customer;
-import models.Table;
+import models.Seating;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -11,16 +11,16 @@ public class BookingTest {
 
     Booking booking;
     Customer customer;
-    Table table1;
-    Table table2;
-    Table table3;
+    Seating seating1;
+    Seating seating2;
+    Seating seating3;
 ;
 
     @Before
     public void setUp() throws Exception {
-        table1 = Table.TABLETWO;
-        table2 = Table.TABLEFOUR;
-        table3 = Table.TABLESIX;
+        seating1 = Seating.TABLETWO;
+        seating2 = Seating.TABLEFOUR;
+        seating3 = Seating.TABLESIX;
 
         Customer customer1 = new Customer("Regina S. Wilder", 400);
         Customer customer2 = new Customer("Hershel H. Gutierrez", 200);
@@ -33,10 +33,10 @@ public class BookingTest {
         Calendar calendar4 = new GregorianCalendar(2018, 7, 1, 19, 30);
         Calendar calendar5 = new GregorianCalendar(2018, 7, 1, 19, 30);
 
-        Booking booking1 = new Booking((GregorianCalendar) calendar1, 6, customer1, table1, 50, 0.90);
-        Booking booking2 = new Booking((GregorianCalendar) calendar1, 4, customer1, table1, 50, 0.90);
-        Booking booking3 = new Booking((GregorianCalendar) calendar1, 2, customer1, table1, 50, 0.90);
-        Booking booking4 = new Booking((GregorianCalendar) calendar1, 2, customer1, table1, 50, 0.90);
+        Booking booking1 = new Booking((GregorianCalendar) calendar1, 6, customer1, seating1, 50, 0.90);
+        Booking booking2 = new Booking((GregorianCalendar) calendar1, 4, customer1, seating1, 50, 0.90);
+        Booking booking3 = new Booking((GregorianCalendar) calendar1, 2, customer1, seating1, 50, 0.90);
+        Booking booking4 = new Booking((GregorianCalendar) calendar1, 2, customer1, seating1, 50, 0.90);
     }
 
     @Test
