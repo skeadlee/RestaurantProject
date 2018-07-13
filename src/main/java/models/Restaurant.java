@@ -79,7 +79,7 @@ public class Restaurant {
     }
 
 
-    @OneToMany(mappedBy = "restuarant", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "restaurant", fetch = FetchType.LAZY)
     public Booking getBooking() {
         return booking;
     }
