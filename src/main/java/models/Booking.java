@@ -81,6 +81,6 @@ public class Booking {
     }
 
     public void checkAvailability(GregorianCalendar dateTime, int capacity){
-        
+
     }
 }
