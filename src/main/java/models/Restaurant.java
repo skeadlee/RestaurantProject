@@ -13,6 +13,8 @@ public class Restaurant {
     private String name;
     private ArrayList<Seating> tables;
     private Till till;
+    private Booking booking;
+    private Customer customer;
 
     public Restaurant(String name) {
         this.name = name;
@@ -41,15 +43,6 @@ public class Restaurant {
         this.name = name;
     }
 
-    @OneToMany(mappedBy="restaurant", fetch = FetchType.LAZY)
-    public ArrayList<Seating> getTables() {
-        return tables;
-    }
-
-    public void setTables(ArrayList<Seating> tables) {
-        this.tables = tables;
-    }
-
     @OneToOne(mappedBy = "restaurant", fetch = FetchType.LAZY)
     public Till getTill() {
         return till;
@@ -59,7 +52,11 @@ public class Restaurant {
         this.till = till;
     }
 
-    @OneToMany(mappedBy = "restaurant", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy="restaurant", fetch = FetchType.LAZY)
+    public ArrayList<Seating> getTables() {
+        return tables;
+    }
+
     public void setTables(){
         Seating seating1 = Seating.TABLETWO;
         Seating seating2 = Seating.TABLETWO;
@@ -78,4 +75,21 @@ public class Restaurant {
     }
 
 
+    @OneToMany(mappedBy = "restuarant", fetch = FetchType.LAZY)
+    public Booking getBooking() {
+        return booking;
+    }
+
+    public void setBooking(Booking booking) {
+        this.booking = booking;
+    }
+
+    @OneToMany(mappedBy = "restaurant", fetch = FetchType.LAZY)
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
 }
