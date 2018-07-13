@@ -15,13 +15,15 @@ public class Booking {
     public Booking() {
     }
 
-    public Booking(GregorianCalendar dateTime, int capacity, Customer customer, Seating seating, int pricePerHead, double discountApplied) {
+
+    public Booking(GregorianCalendar dateTime, int capacity, Customer customer, Seating seating) {
         this.dateTime = dateTime;
         this.capacity = capacity;
         this.customer = customer;
         this.seating = seating;
-        this.pricePerHead = pricePerHead;
-        this.discountApplied = discountApplied;
+        this.pricePerHead = 50;
+        this.discountApplied = 35;
+
     }
 
     public int getId() {
@@ -83,4 +85,5 @@ public class Booking {
     public void checkAvailability(GregorianCalendar dateTime, int capacity){
 
     }
+
 }

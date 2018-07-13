@@ -30,5 +30,9 @@ public enum Seating {
     public ArrayList<Customer> getDiners() {
         return diners;
     }
+
+    public void addCustomer(Customer customers){
+        this.diners.add(customers);
+    }
     
 }
