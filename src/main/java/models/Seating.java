@@ -1,5 +1,9 @@
 package models;
 
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import java.util.ArrayList;
 
 public enum Seating {
@@ -11,6 +15,8 @@ public enum Seating {
     private int chairs;
     private String name;
     private ArrayList<Customer> diners;
+    private Restaurant restaurant;
+    private Booking booking;
 
     Seating(int chairs, String name) {
 
@@ -34,5 +40,23 @@ public enum Seating {
     public void addCustomer(Customer customers){
         this.diners.add(customers);
     }
-    
+
+    @ManyToOne
+    @JoinColumn(name = "restaurant_id", nullable = false)
+    public Restaurant getRestaurant() {
+        return restaurant;
+    }
+
+    public void setRestaurant(Restaurant restaurant) {
+        this.restaurant = restaurant;
+    }
+
+    @OneToMany(mappedBy = "seating", fetch = FetchType.LAZY)
+    public Booking getBooking() {
+        return booking;
+    }
+
+    public void setBooking(Booking booking) {
+        this.booking = booking;
+    }
 }

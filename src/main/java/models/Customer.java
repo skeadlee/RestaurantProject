@@ -1,5 +1,6 @@
 package models;
 
+import javax.persistence.*;
 import java.util.ArrayList;
 
 public class Customer {
@@ -9,6 +10,7 @@ public class Customer {
     private int wallet;
     private int loyaltyCard;
     private ArrayList<Booking> bookings;
+    private Restaurant restaurant;
 
     public Customer(){}
 
@@ -19,6 +21,9 @@ public class Customer {
         this.bookings = new ArrayList<Booking>();
     }
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     public int getId() {
         return id;
     }
@@ -27,6 +32,7 @@ public class Customer {
         this.id = id;
     }
 
+    @Column(name = "name")
     public String getName() {
         return name;
     }
@@ -35,6 +41,7 @@ public class Customer {
         this.name = name;
     }
 
+    @Column(name = "wallet")
     public int getWallet() {
         return wallet;
     }
@@ -43,6 +50,7 @@ public class Customer {
         this.wallet = wallet;
     }
 
+    @Column(name = "loyalty_card_number")
     public int getLoyaltyCard() {
         return loyaltyCard;
     }
@@ -51,6 +59,10 @@ public class Customer {
         this.loyaltyCard = loyaltyCard;
     }
 
+    @ManyToMany
+    @JoinTable(name = "customer_booking",
+            joinColumns = {@JoinColumn(name = "customer_id", nullable = false, updatable = false)},
+            inverseJoinColumns = {@JoinColumn(name = "booking_id", nullable = false, updatable = false)})
     public ArrayList<Booking> getBookings() {
         return bookings;
     }
@@ -58,6 +70,17 @@ public class Customer {
     public void setBookings(ArrayList<Booking> bookings) {
         this.bookings = bookings;
     }
+
+    @ManyToOne
+    @JoinColumn(name = "restuarant_id", nullable = false)
+    public Restaurant getRestaurant() {
+        return restaurant;
+    }
+
+    public void setRestaurant(Restaurant restaurant) {
+        this.restaurant = restaurant;
+    }
+
 
     public void addLoyaltyPoints(int i){
         setLoyaltyCard(loyaltyCard += i);
