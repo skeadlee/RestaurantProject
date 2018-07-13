@@ -39,8 +39,7 @@ public enum Seating {
     }
 
     //@ManyToOne
-   // @JoinColumn(name = "restaurant_id", nullable = false)
-    @Enumerated(value = EnumType.STRING)
+    //@JoinColumn(name = "restaurant_id", nullable = false)
     public Restaurant getRestaurant() {
         return restaurant;
     }
@@ -50,7 +49,6 @@ public enum Seating {
     }
 
     //@OneToMany(mappedBy = "seating", fetch = FetchType.LAZY)
-    @Enumerated(value = EnumType.STRING)
     public Booking getBooking() {
         return booking;
     }

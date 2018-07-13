@@ -72,8 +72,7 @@ public class Booking {
         this.customer = customer;
     }
 
-    @ManyToOne
-    @JoinColumn(name="seating_id", nullable = false)
+    @Enumerated(value = EnumType.STRING)
     public Seating getSeating() {
         return seating;
     }
