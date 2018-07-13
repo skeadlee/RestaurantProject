@@ -1,5 +1,7 @@
 package models;
 
+import org.hibernate.annotations.Cascade;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 
@@ -59,6 +61,7 @@ public class Customer {
         this.loyaltyCard = loyaltyCard;
     }
 
+    @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
     @ManyToMany
     @JoinTable(name = "customer_booking",
             joinColumns = {@JoinColumn(name = "customer_id", nullable = false, updatable = false)},
