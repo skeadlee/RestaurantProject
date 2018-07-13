@@ -79,4 +79,8 @@ public class Booking {
     public void setDiscountApplied(double discountApplied) {
         this.discountApplied = discountApplied;
     }
+
+    public void checkAvailability(GregorianCalendar dateTime, int capacity){
+        if()
+    }
 }
