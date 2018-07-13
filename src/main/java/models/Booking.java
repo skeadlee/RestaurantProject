@@ -1,5 +1,7 @@
 package models;
 
+import org.hibernate.annotations.Cascade;
+
 import javax.persistence.*;
 import java.util.GregorianCalendar;
 
@@ -57,6 +59,7 @@ public class Booking {
         this.capacity = capacity;
     }
 
+    @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
     @ManyToMany
     @JoinTable(name = "customer_booking",
             joinColumns = {@JoinColumn(name = "booking_id", nullable = false, updatable = false)},
