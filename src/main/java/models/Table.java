@@ -8,7 +8,6 @@ public enum Table {
     TABLEFOUR(4, "Table for four"),
     TABLESIX(6, "Table for six");
 
-    private int id;
     private int chairs;
     private String name;
     private ArrayList<Customer> diners;
