@@ -33,14 +33,15 @@ public class BookingTest {
         Calendar calendar4 = new GregorianCalendar(2018, 7, 1, 19, 30);
         Calendar calendar5 = new GregorianCalendar(2018, 7, 1, 19, 30);
 
-        Booking booking1 = new Booking((GregorianCalendar) calendar1, 6, customer1, table1, 50, 0.90);
-        Booking booking2 = new Booking((GregorianCalendar) calendar1, 4, customer1, table1, 50, 0.90);
-        Booking booking3 = new Booking((GregorianCalendar) calendar1, 2, customer1, table1, 50, 0.90);
-        Booking booking4 = new Booking((GregorianCalendar) calendar1, 2, customer1, table1, 50, 0.90);
+        Booking booking1 = new Booking((GregorianCalendar) calendar1, 2, customer1, table1);
+        Booking booking2 = new Booking((GregorianCalendar) calendar1, 4, customer1, table1);
+        Booking booking3 = new Booking((GregorianCalendar) calendar1, 2, customer1, table1);
+        Booking booking4 = new Booking((GregorianCalendar) calendar1, 2, customer1, table1);
     }
 
     @Test
     public void canGetBooking() {
+        Booking booking1;
 
 
     }

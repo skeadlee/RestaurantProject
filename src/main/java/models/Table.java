@@ -31,5 +31,9 @@ public enum Table {
     public ArrayList<Customer> getDiners() {
         return diners;
     }
+
+    public void addCustomer(Customer customers){
+        this.diners.add(customers);
+    }
     
 }
