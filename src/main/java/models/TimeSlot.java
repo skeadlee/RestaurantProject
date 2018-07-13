@@ -1,28 +1,25 @@
 package models;
 
-import java.time.temporal.TemporalAccessor;
-import java.time.temporal.TemporalAmount;
-import java.util.Optional;
 
-public class TimeSlot {
-    private final Optional<TemporalAccessor> start;
-    private final TemporalAmount temporalAmount;
+public enum TimeSlot{
 
-    public TimeSlot(final TemporalAccessor start, final TemporalAmount temporalAmount) {
-        this.start = Optional.of(start);
-        this.temporalAmount = temporalAmount;
+    SEVEN(1900),
+    SEVENTHIRTY(1930),
+    EIGHT(2000),
+    EIGHTTHIRTY(2300),
+    NINE(2100),
+    NINETHIRTY(2130),
+    TEN(2200),
+    TENTHIRTY(2230),
+    ELEVEN(2300);
+
+    private int time;
+
+    TimeSlot(int time){
+        this.time = time;
     }
 
-    public TimeSlot(final TemporalAmount temporalAmount) {
-        this.start = Optional.empty();
-        this.temporalAmount = temporalAmount;
-    }
-
-    public Optional<TemporalAccessor> getStart() {
-        return this.start;
-    }
-
-    public TemporalAmount getTemporalAmount() {
-        return this.temporalAmount;
+    public int getTime() {
+        return time;
     }
 }
