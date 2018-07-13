@@ -1,5 +1,5 @@
 import models.Restaurant;
-import models.Table;
+import models.Seating;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -21,8 +21,8 @@ public class RestaurantTest {
 
     @Test
     public void restaurantContainsTables() {
-        assertEquals(true, restaurant.getTables().contains(Table.TABLETWO));
-        assertEquals(true, restaurant.getTables().contains(Table.TABLEFOUR));
-        assertEquals(true, restaurant.getTables().contains(Table.TABLESIX));
+        assertEquals(true, restaurant.getTables().contains(Seating.TABLETWO));
+        assertEquals(true, restaurant.getTables().contains(Seating.TABLEFOUR));
+        assertEquals(true, restaurant.getTables().contains(Seating.TABLESIX));
     }
 }

@@ -8,20 +8,22 @@ public class Booking {
     private GregorianCalendar dateTime;
     private int capacity;
     private Customer customer;
-    private Table table;
+    private Seating seating;
     private int pricePerHead;
     private double discountApplied;
 
     public Booking() {
     }
 
-    public Booking(GregorianCalendar dateTime, int capacity, Customer customer, Table table) {
+
+    public Booking(GregorianCalendar dateTime, int capacity, Customer customer, Seating seating) {
         this.dateTime = dateTime;
         this.capacity = capacity;
         this.customer = customer;
-        this.table = table;
+        this.seating = seating;
         this.pricePerHead = 50;
         this.discountApplied = 35;
+
     }
 
     public int getId() {
@@ -56,12 +58,12 @@ public class Booking {
         this.customer = customer;
     }
 
-    public Table getTable() {
-        return table;
+    public Seating getSeating() {
+        return seating;
     }
 
-    public void setTable(Table table) {
-        this.table = table;
+    public void setSeating(Seating seating) {
+        this.seating = seating;
     }
 
     public int getPricePerHead() {
@@ -79,6 +81,5 @@ public class Booking {
     public void setDiscountApplied(double discountApplied) {
         this.discountApplied = discountApplied;
     }
-
 
 }
