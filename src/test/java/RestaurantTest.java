@@ -25,4 +25,10 @@ public class RestaurantTest {
         assertEquals(true, restaurant.getTables().contains(Table.TABLEFOUR));
         assertEquals(true, restaurant.getTables().contains(Table.TABLESIX));
     }
+
+    @Test
+    public void canMakeBookings(){
+        restaurant.makeBooking(customer1, 1900, 2);
+
+    }
 }

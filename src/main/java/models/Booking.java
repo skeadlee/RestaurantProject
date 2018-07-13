@@ -5,7 +5,7 @@ import java.util.GregorianCalendar;
 public class Booking {
 
     private int id;
-    private GregorianCalendar dateTime;
+    private int bookingTime;
     private int capacity;
     private Customer customer;
     private Table table;
@@ -15,8 +15,8 @@ public class Booking {
     public Booking() {
     }
 
-    public Booking(GregorianCalendar dateTime, int capacity, Customer customer, Table table) {
-        this.dateTime = dateTime;
+    public Booking(int bookingTime, int capacity, Customer customer, Table table) {
+        this.bookingTime = bookingTime;
         this.capacity = capacity;
         this.customer = customer;
         this.table = table;
@@ -32,12 +32,12 @@ public class Booking {
         this.id = id;
     }
 
-    public GregorianCalendar getDateTime() {
-        return dateTime;
+    public int getBookingTime() {
+        return bookingTime;
     }
 
-    public void setDateTime(GregorianCalendar dateTime) {
-        this.dateTime = dateTime;
+    public void setBookingTime(int bookingTime) {
+        this.bookingTime = bookingTime;
     }
 
     public int getCapacity() {

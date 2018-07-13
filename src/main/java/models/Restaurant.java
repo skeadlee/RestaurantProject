@@ -14,7 +14,7 @@ public class Restaurant {
         this.name = name;
         this.tables = new ArrayList();
         this.till = new Till();
-        setTables();
+        createTables();
     }
 
     public int getId() {
@@ -49,7 +49,7 @@ public class Restaurant {
         this.till = till;
     }
 
-    public void setTables(){
+    public void createTables(){
         Table table1 = Table.TABLETWO;
         Table table2 = Table.TABLETWO;
         Table table3 = Table.TABLETWO;
