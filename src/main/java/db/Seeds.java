@@ -7,7 +7,8 @@ import java.util.GregorianCalendar;
 
 public class Seeds {
 
-    public static void seedData(){
+    public static void seedData() {
+
 
         DBHelper.deleteAll(Booking.class);
         DBHelper.deleteAll(Customer.class);
@@ -35,6 +36,7 @@ public class Seeds {
         DBHelper.save(customer5);
         DBHelper.save(customer6);
 
+
         Calendar calendar1 = new GregorianCalendar(2018, 7, 1, 18, 00);
         Calendar calendar2 = new GregorianCalendar(2018, 7, 1, 18, 30);
         Calendar calendar3 = new GregorianCalendar(2018, 7, 1, 19, 00);
@@ -58,13 +60,6 @@ public class Seeds {
         DBHelper.save(booking3);
         DBHelper.save(booking4);
         DBHelper.save(booking5);
-
-
-
-
-
-
-
 
 
     }

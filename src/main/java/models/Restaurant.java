@@ -20,7 +20,7 @@ public class Restaurant {
         this.name = name;
         this.tables = new ArrayList();
         this.till = new Till();
-        setTables();
+        makeTables();
     }
 
     @Id
@@ -52,12 +52,16 @@ public class Restaurant {
         this.till = till;
     }
 
-    @OneToMany(mappedBy="restaurant", fetch = FetchType.LAZY)
+    @Enumerated(value= EnumType.STRING)
     public ArrayList<Seating> getTables() {
         return tables;
     }
 
-    public void setTables(){
+    public void setTables(ArrayList<Seating> tables) {
+        this.tables = tables;
+    }
+
+    public void makeTables(){
         Seating seating1 = Seating.TABLETWO;
         Seating seating2 = Seating.TABLETWO;
         Seating seating3 = Seating.TABLETWO;
