@@ -49,11 +49,11 @@ public class Seeds {
         DBHelper.save(calendar4);
         DBHelper.save(calendar5);
 
-        Booking booking1 = new Booking(calendar1, 4, customer1, Seating.TABLEFOUR);
-        Booking booking2 = new Booking(calendar2, 4, customer2, Seating.TABLETWO);
-        Booking booking3 = new Booking(calendar3, 4, customer3, Seating.TABLETWO);
-        Booking booking4 = new Booking(calendar4, 4, customer4, Seating.TABLESIX);
-        Booking booking5 = new Booking(calendar5, 4, customer5, Seating.TABLEFOUR);
+        Booking booking1 = new Booking((GregorianCalendar)calendar1, 4, customer1, Seating.TABLEFOUR);
+        Booking booking2 = new Booking((GregorianCalendar)calendar2, 4, customer2, Seating.TABLETWO);
+        Booking booking3 = new Booking((GregorianCalendar)calendar3, 4, customer3, Seating.TABLETWO);
+        Booking booking4 = new Booking((GregorianCalendar)calendar4, 4, customer4, Seating.TABLESIX);
+        Booking booking5 = new Booking((GregorianCalendar)calendar5, 4, customer5, Seating.TABLEFOUR);
 
         DBHelper.save(booking1);
         DBHelper.save(booking2);
