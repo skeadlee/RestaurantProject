@@ -5,6 +5,7 @@ import org.hibernate.annotations.Cascade;
 import javax.persistence.*;
 import java.util.ArrayList;
 
+import java.util.GregorianCalendar;
 import java.util.List;
 
 @Entity
@@ -12,6 +13,7 @@ import java.util.List;
 public class Booking {
 
     private int id;
+    private GregorianCalendar timeDate;
     private int capacity;
     private Customer customer;
     private Seating seating;
@@ -23,15 +25,14 @@ public class Booking {
     }
 
 
-    public Booking(int capacity, Customer customer, Seating seating, Restaurant restaurant) {
+    public Booking(GregorianCalendar timeDate, int capacity, Customer customer, Seating seating, Restaurant restaurant) {
+        this.timeDate = timeDate;
         this.capacity = capacity;
         this.customer = customer;
         this.seating = seating;
         this.pricePerHead = 50;
-        this.discountApplied = 35;
+        this.discountApplied = 5;
         this.restaurant = restaurant;
-
-
     }
 
     @Id
@@ -45,6 +46,14 @@ public class Booking {
         this.id = id;
     }
 
+    @Column(name = "timeDate")
+    public GregorianCalendar getTimeDate() {
+        return timeDate;
+    }
+
+    public void setTimeDate(GregorianCalendar timeDate) {
+        this.timeDate = timeDate;
+    }
 
     @Column(name = "capacity")
     public int getCapacity() {
