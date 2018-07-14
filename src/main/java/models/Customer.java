@@ -19,10 +19,10 @@ public class Customer {
 
     public Customer(){}
 
-    public Customer(String name, int wallet) {
+    public Customer(String name, int wallet, int loyaltyCard) {
         this.name = name;
         this.wallet = wallet;
-        this.loyaltyCard = 0;
+        this.loyaltyCard = loyaltyCard;
         this.bookings = new ArrayList<Booking>();
     }
 
@@ -80,7 +80,7 @@ public class Customer {
     public void addBookings(Booking booking) { this.bookings.add(booking);}
 
     @ManyToOne
-    @JoinColumn(name = "restuarant_id")
+    @JoinColumn(name = "restaurant_id")
     public Restaurant getRestaurant() {
         return restaurant;
     }

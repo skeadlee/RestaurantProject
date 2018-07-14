@@ -22,12 +22,19 @@ public class Seeds {
         Till till = new Till(500);
         DBHelper.save(till);
 
-        Customer customer1 = new Customer("Chris McMillan", 300);
-        Customer customer2 = new Customer("Niamh Fraser", 200);
-        Customer customer3 = new Customer("Zac Wood", 200);
-        Customer customer4 = new Customer("Richard PK", 1000);
-        Customer customer5 = new Customer("Karol Jabłoński", 125);
-        Customer customer6 = new Customer("Thomas Schulz", 500);
+        Customer customer1 = new Customer("Chris McMillan", 300, 123456);
+        Customer customer2 = new Customer("Niamh Fraser", 200, 223456);
+        Customer customer3 = new Customer("Zac Wood", 200, 323456);
+        Customer customer4 = new Customer("Richard PK", 1000, 423456);
+        Customer customer5 = new Customer("Karol Jabłoński", 125, 523456);
+        Customer customer6 = new Customer("Thomas Schulz", 500, 623456);
+
+        customer1.setRestaurant(restaurant);
+        customer2.setRestaurant(restaurant);
+        customer3.setRestaurant(restaurant);
+        customer4.setRestaurant(restaurant);
+        customer5.setRestaurant(restaurant);
+        customer6.setRestaurant(restaurant);
 
         DBHelper.save(customer1);
         DBHelper.save(customer2);

@@ -56,7 +56,7 @@ public class Restaurant {
         this.till = till;
     }
 
-    @Enumerated(value= EnumType.STRING)
+    @Enumerated(value= EnumType.ORDINAL)
     public ArrayList<Seating> getTables() {
         return tables;
     }

@@ -3,6 +3,8 @@ package models;
 import javax.persistence.*;
 import java.util.ArrayList;
 
+//@Entity
+//@Table(name="seating")
 public enum Seating {
 
     TABLETWO(2, "Seating for two"),
@@ -22,6 +24,7 @@ public enum Seating {
         this.diners = new ArrayList<Customer>();
     }
 
+    //@Column(name="chairs")
     public int getChairs() {
         return chairs;
     }
@@ -30,6 +33,7 @@ public enum Seating {
         return name;
     }
 
+    //@Column(name="customers")
     public ArrayList<Customer> getDiners() {
         return diners;
     }
@@ -40,6 +44,7 @@ public enum Seating {
 
     //@ManyToOne
     //@JoinColumn(name = "restaurant_id", nullable = false)
+    //@Column(name="restaurant")
     public Restaurant getRestaurant() {
         return restaurant;
     }
@@ -49,6 +54,7 @@ public enum Seating {
     }
 
     //@OneToMany(mappedBy = "seating", fetch = FetchType.LAZY)
+    //@Column(name="bookings")
     public Booking getBooking() {
         return booking;
     }
