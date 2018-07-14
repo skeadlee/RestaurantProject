@@ -13,7 +13,7 @@ public class Booking {
 
     private int id;
     private int capacity;
-    private List<Customer> customers;
+    private Customer customer;
     private Seating seating;
     private int pricePerHead;
     private double discountApplied;
@@ -23,12 +23,14 @@ public class Booking {
     }
 
 
-    public Booking(int capacity, Customer customer, Seating seating) {
+    public Booking(int capacity, Customer customer, Seating seating, Restaurant restaurant) {
         this.capacity = capacity;
-        this.customers = new ArrayList<>();
+        this.customer = customer;
         this.seating = seating;
         this.pricePerHead = 50;
         this.discountApplied = 35;
+        this.restaurant = restaurant;
+
 
     }
 
@@ -53,22 +55,15 @@ public class Booking {
         this.capacity = capacity;
     }
 
-    @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
-    @ManyToMany
-    @JoinTable(name = "customer_booking",
-            joinColumns = {@JoinColumn(name = "booking_id", nullable = false, updatable = false)},
-            inverseJoinColumns = {@JoinColumn(name = "customer_id", nullable = false, updatable = false)})
-
-    public List<Customer> getCustomers() {
-        return customers;
+    @ManyToOne
+    @JoinColumn(name = "customer_id")
+    public Customer getCustomer() {
+        return customer;
     }
 
-    public void setCustomers(List<Customer> customers) {
-        this.customers = customers;
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
     }
-
-    public void addCustomers(Customer customer){ this.customers.add(customer);}
-
 
     @ManyToOne
     @JoinColumn(name = "seating_id")

@@ -65,11 +65,7 @@ public class Customer {
         this.loyaltyCard = loyaltyCard;
     }
 
-    @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
-    @ManyToMany
-    @JoinTable(name = "customer_booking",
-            joinColumns = {@JoinColumn(name = "customer_id", nullable = false, updatable = false)},
-            inverseJoinColumns = {@JoinColumn(name = "booking_id", nullable = false, updatable = false)})
+    @OneToMany(mappedBy = "customer", fetch = FetchType.LAZY)
     public List<Booking> getBookings() {
         return bookings;
     }

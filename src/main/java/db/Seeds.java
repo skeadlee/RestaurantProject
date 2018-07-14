@@ -86,17 +86,17 @@ public class Seeds {
 //        DBHelper.save(calendar4);
 //        DBHelper.save(calendar5);
 
-//        Booking booking1 = new Booking(4, customer1, Seating.TABLEFOUR);
-//        Booking booking2 = new Booking(4, customer2, Seating.TABLETWO);
-//        Booking booking3 = new Booking(4, customer3, Seating.TABLETWO);
-//        Booking booking4 = new Booking(4, customer4, Seating.TABLESIX);
-//        Booking booking5 = new Booking(4, customer5, Seating.TABLEFOUR);
-//
-//        DBHelper.save(booking1);
-//        DBHelper.save(booking2);
-//        DBHelper.save(booking3);
-//        DBHelper.save(booking4);
-//        DBHelper.save(booking5);
+        Booking booking1 = new Booking(2, customer1, seating1, restaurant);
+        Booking booking2 = new Booking(2, customer2, seating2, restaurant);
+        Booking booking3 = new Booking(4, customer3, seating7, restaurant);
+        Booking booking4 = new Booking(4, customer4, seating8, restaurant);
+        Booking booking5 = new Booking(6, customer5, seating11, restaurant);
+
+        DBHelper.save(booking1);
+        DBHelper.save(booking2);
+        DBHelper.save(booking3);
+        DBHelper.save(booking4);
+        DBHelper.save(booking5);
 //
 //        restaurant.makeBooking(booking1);
 //        restaurant.makeBooking(booking2);
