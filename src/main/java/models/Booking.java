@@ -70,7 +70,8 @@ public class Booking {
     public void addCustomers(Customer customer){ this.customers.add(customer);}
 
 
-    @Enumerated(value = EnumType.STRING)
+    @ManyToOne
+    @JoinColumn(name = "seating_id")
     public Seating getSeating() {
         return seating;
     }
@@ -98,7 +99,7 @@ public class Booking {
     }
 
     @ManyToOne
-    @JoinColumn(name = "restuarant_id")
+    @JoinColumn(name = "restaurant_id")
     public Restaurant getRestaurant() {
         return restaurant;
     }

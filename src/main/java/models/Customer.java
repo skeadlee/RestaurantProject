@@ -16,6 +16,7 @@ public class Customer {
     private int loyaltyCard;
     private List<Booking> bookings;
     private Restaurant restaurant;
+    private Seating table;
 
     public Customer(){}
 
@@ -83,6 +84,16 @@ public class Customer {
     @JoinColumn(name = "restaurant_id")
     public Restaurant getRestaurant() {
         return restaurant;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "seating_id")
+    public Seating getTable() {
+        return table;
+    }
+
+    public void setTable(Seating seating) {
+        this.table = seating;
     }
 
     public void setRestaurant(Restaurant restaurant) {
