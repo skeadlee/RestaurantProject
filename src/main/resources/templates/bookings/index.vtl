@@ -1,0 +1,26 @@
+<p class="pageHeader">Bookings</p>
+
+<div class="container">
+    <table>
+        <tr>
+            <th>Date and Time of Booking:</th>
+            <th>Name:</th>
+            <th>Table Number:</th>
+            <th>Number of Guests:</th>
+            <th>Loyalty Card:</th>
+            <th>Price Per Head:</th>
+            <th>Discount Applied:</th>
+        </tr>
+        #foreach($booking in $bookings)
+        <tr>
+            <td>$booking.prettyTimeDate()</td>
+            <td>$booking.getCustomer().getName()</td>
+            <td>$booking.getSeating().getName()</td>
+            <td>$booking.getCapacity()</td>
+            <td>$booking.getCustomer().getLoyaltyCard()</td>
+            <td>$booking.getPricePerHead()</td>
+            <td>$booking.getDiscountApplied()</td>
+        </tr>
+        #end
+    </table>
+</div>

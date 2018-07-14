@@ -5,6 +5,7 @@ import models.*;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.List;
 
 public class Seeds {
 
@@ -95,6 +96,9 @@ public class Seeds {
         restaurant.makeBooking(booking3);
         restaurant.makeBooking(booking4);
         restaurant.makeBooking(booking5);
+
+
+        List<Booking> allBookings = DBHelper.getAll(Booking.class);
 
 
     }
