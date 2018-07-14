@@ -62,7 +62,7 @@ public class Restaurant {
         return tables;
     }
 
-    public void setTables(ArrayList<Seating> tables) {
+    public void setTables(List<Seating> tables) {
         this.tables = tables;
     }
 

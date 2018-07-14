@@ -3,6 +3,8 @@ package models;
 import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 import java.util.GregorianCalendar;
@@ -53,6 +55,12 @@ public class Booking {
 
     public void setTimeDate(GregorianCalendar timeDate) {
         this.timeDate = timeDate;
+    }
+
+    public String prettyTimeDate(){
+        DateFormat formatter = new SimpleDateFormat("dd-MMM-yyyy hh:mm");
+        formatter.setLenient(false);
+        return formatter.format(this.timeDate.getTime());
     }
 
     @Column(name = "capacity")
