@@ -37,17 +37,17 @@ public class Seeds {
         DBHelper.save(customer6);
 
 
-        Calendar calendar1 = new GregorianCalendar(2018, 7, 1, 18, 00);
-        Calendar calendar2 = new GregorianCalendar(2018, 7, 1, 18, 30);
-        Calendar calendar3 = new GregorianCalendar(2018, 7, 1, 19, 00);
-        Calendar calendar4 = new GregorianCalendar(2018, 7, 1, 19, 30);
-        Calendar calendar5 = new GregorianCalendar(2018, 7, 1, 19, 30);
-
-        DBHelper.save(calendar1);
-        DBHelper.save(calendar2);
-        DBHelper.save(calendar3);
-        DBHelper.save(calendar4);
-        DBHelper.save(calendar5);
+//        Calendar calendar1 = new GregorianCalendar(2018, 7, 1, 18, 00);
+//        Calendar calendar2 = new GregorianCalendar(2018, 7, 1, 18, 30);
+//        Calendar calendar3 = new GregorianCalendar(2018, 7, 1, 19, 00);
+//        Calendar calendar4 = new GregorianCalendar(2018, 7, 1, 19, 30);
+//        Calendar calendar5 = new GregorianCalendar(2018, 7, 1, 19, 30);
+//
+//        DBHelper.save(calendar1);
+//        DBHelper.save(calendar2);
+//        DBHelper.save(calendar3);
+//        DBHelper.save(calendar4);
+//        DBHelper.save(calendar5);
 
         Booking booking1 = new Booking(4, customer1, Seating.TABLEFOUR);
         Booking booking2 = new Booking(4, customer2, Seating.TABLETWO);

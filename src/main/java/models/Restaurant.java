@@ -21,9 +21,9 @@ public class Restaurant {
 
     public Restaurant(String name) {
         this.name = name;
-        this.tables = new ArrayList();
+        this.tables = new ArrayList<Seating>();
         this.till = new Till();
-        this.bookings = new ArrayList<>();
+        this.bookings = new ArrayList<Booking>();
         makeTables();
     }
 

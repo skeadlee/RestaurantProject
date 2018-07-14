@@ -63,9 +63,11 @@ public class DBHelper {
         session = HibernateUtil.getSessionFactory().openSession();
         try {
             transaction = session.beginTransaction();
-            String hql = "FROM " + classType.getSimpleName();
-            session.createQuery(hql).executeUpdate();
-
+            Criteria cr = session.createCriteria(classType);
+            List<T> results = cr.list();
+            for (T result : results) {
+                session.delete(result);
+            }
             transaction.commit();
         } catch (HibernateException ex) {
             transaction.rollback();

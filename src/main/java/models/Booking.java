@@ -4,7 +4,7 @@ import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
 import java.util.ArrayList;
-import java.util.GregorianCalendar;
+
 import java.util.List;
 
 @Entity
@@ -107,9 +107,9 @@ public class Booking {
         this.restaurant = restaurant;
     }
 
-    public void checkAvailability(GregorianCalendar dateTime, int capacity) {
+    //public void checkAvailability(GregorianCalendar dateTime, int capacity) {
 
-    }
+    //}
 
     public void takeBooking(int party, Customer customer, Seating table) {
         if (table.getChairs() <= party) {
