@@ -4,14 +4,17 @@ import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.List;
 
+@Entity
+@Table(name="customers")
 public class Customer {
 
     private int id;
     private String name;
     private int wallet;
     private int loyaltyCard;
-    private ArrayList<Booking> bookings;
+    private List<Booking> bookings;
     private Restaurant restaurant;
 
     public Customer(){}
@@ -66,16 +69,18 @@ public class Customer {
     @JoinTable(name = "customer_booking",
             joinColumns = {@JoinColumn(name = "customer_id", nullable = false, updatable = false)},
             inverseJoinColumns = {@JoinColumn(name = "booking_id", nullable = false, updatable = false)})
-    public ArrayList<Booking> getBookings() {
+    public List<Booking> getBookings() {
         return bookings;
     }
 
-    public void setBookings(ArrayList<Booking> bookings) {
+    public void setBookings(List<Booking> bookings) {
         this.bookings = bookings;
     }
 
+    public void addBookings(Booking booking) { this.bookings.add(booking);}
+
     @ManyToOne
-    @JoinColumn(name = "restuarant_id", nullable = false)
+    @JoinColumn(name = "restuarant_id")
     public Restaurant getRestaurant() {
         return restaurant;
     }
@@ -89,7 +94,4 @@ public class Customer {
         setLoyaltyCard(loyaltyCard += i);
     }
 
-    public void addBookings(Booking booking){
-        this.getBookings().add(booking);
-    }
 }

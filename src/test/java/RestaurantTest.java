@@ -20,7 +20,7 @@ public class RestaurantTest {
     @Before
     public void setUp() throws Exception {
         restaurant = new Restaurant("CodeClanChristmasCookHouse");
-        booking1 = new Booking((GregorianCalendar)calendar1, 4, customer1, Seating.TABLEFOUR);
+        booking1 = new Booking(4, customer1, Seating.TABLEFOUR);
     }
 
     @Test
@@ -38,6 +38,6 @@ public class RestaurantTest {
     @Test
     public void canMakeBooking(){
         restaurant.makeBooking(booking1);
-        assertEquals(1, restaurant.getBooking().size());
+        assertEquals(1, restaurant.getBookings().size());
     }
 }

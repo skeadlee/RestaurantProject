@@ -40,7 +40,7 @@ public class Till {
     }
 
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "till_id", nullable = false)
+    @JoinColumn(name = "till_id")
     public Restaurant getRestaurant() {
         return restaurant;
     }

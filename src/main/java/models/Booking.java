@@ -7,10 +7,11 @@ import java.util.ArrayList;
 import java.util.GregorianCalendar;
 import java.util.List;
 
+@Entity
+@Table(name="bookings")
 public class Booking {
 
     private int id;
-    private GregorianCalendar dateTime;
     private int capacity;
     private List<Customer> customers;
     private Seating seating;
@@ -22,8 +23,7 @@ public class Booking {
     }
 
 
-    public Booking(GregorianCalendar dateTime, int capacity, Customer customer, Seating seating) {
-        this.dateTime = dateTime;
+    public Booking(int capacity, Customer customer, Seating seating) {
         this.capacity = capacity;
         this.customers = new ArrayList<>();
         this.seating = seating;
@@ -43,14 +43,6 @@ public class Booking {
         this.id = id;
     }
 
-    @Column(name = "date_and_time")
-    public GregorianCalendar getDateTime() {
-        return dateTime;
-    }
-
-    public void setDateTime(GregorianCalendar dateTime) {
-        this.dateTime = dateTime;
-    }
 
     @Column(name = "capacity")
     public int getCapacity() {
@@ -106,7 +98,7 @@ public class Booking {
     }
 
     @ManyToOne
-    @JoinColumn(name = "restuarant_id", nullable = false)
+    @JoinColumn(name = "restuarant_id")
     public Restaurant getRestaurant() {
         return restaurant;
     }
@@ -119,7 +111,7 @@ public class Booking {
 
     }
 
-    public void takeBooking(GregorianCalendar dateTime, int party, Customer customer, Seating table) {
+    public void takeBooking(int party, Customer customer, Seating table) {
         if (table.getChairs() <= party) {
             table.addCustomer(customer);
         }
