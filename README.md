@@ -18,3 +18,7 @@ Your system must be able to:
 * Calculate how much a customer has spent over a given period of time
 * Give discounts to frequent customers
 * Whatever features you think would be beneficial to a restaurant
+
+## General Rules (Applies to ALL projects)
+
+* ***DO NOT USE ANY FRAMEWORKS*** - this includes Java Swing and similar packages. If in any doubt ask an instructor.
