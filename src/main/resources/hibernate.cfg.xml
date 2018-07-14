@@ -17,6 +17,7 @@
         <mapping class="models.Restaurant"/>
         <mapping class="models.Booking"/>
         <mapping class="models.Till"/>
+        <mapping class="models.Seating"/>
 
     </session-factory>
 </hibernate-configuration>

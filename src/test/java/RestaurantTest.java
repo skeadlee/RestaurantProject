@@ -17,23 +17,23 @@ public class RestaurantTest {
     Calendar calendar1;
     Customer customer1;
 
-    @Before
-    public void setUp() throws Exception {
-        restaurant = new Restaurant("CodeClanChristmasCookHouse");
-        booking1 = new Booking(4, customer1, Seating.TABLEFOUR);
-    }
+//    @Before
+//    public void setUp() throws Exception {
+//        restaurant = new Restaurant("CodeClanChristmasCookHouse");
+//        booking1 = new Booking(4, customer1, Seating.TABLEFOUR);
+//    }
 
     @Test
     public void restaurantHasTables(){
         assertEquals(12, restaurant.getTables().size());
     }
 
-    @Test
-    public void restaurantContainsTables() {
-        assertEquals(true, restaurant.getTables().contains(Seating.TABLETWO));
-        assertEquals(true, restaurant.getTables().contains(Seating.TABLEFOUR));
-        assertEquals(true, restaurant.getTables().contains(Seating.TABLESIX));
-    }
+//    @Test
+//    public void restaurantContainsTables() {
+//        assertEquals(true, restaurant.getTables().contains(Seating.TABLETWO));
+//        assertEquals(true, restaurant.getTables().contains(Seating.TABLEFOUR));
+//        assertEquals(true, restaurant.getTables().contains(Seating.TABLESIX));
+//    }
 
     @Test
     public void canMakeBooking(){

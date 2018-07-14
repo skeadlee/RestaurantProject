@@ -4,6 +4,7 @@ import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+
 import java.util.GregorianCalendar;
 import java.util.List;
 
@@ -12,8 +13,9 @@ import java.util.List;
 public class Booking {
 
     private int id;
+    private GregorianCalendar timeDate;
     private int capacity;
-    private List<Customer> customers;
+    private Customer customer;
     private Seating seating;
     private int pricePerHead;
     private double discountApplied;
@@ -23,13 +25,14 @@ public class Booking {
     }
 
 
-    public Booking(int capacity, Customer customer, Seating seating) {
+    public Booking(GregorianCalendar timeDate, int capacity, Customer customer, Seating seating, Restaurant restaurant) {
+        this.timeDate = timeDate;
         this.capacity = capacity;
-        this.customers = new ArrayList<>();
+        this.customer = customer;
         this.seating = seating;
         this.pricePerHead = 50;
-        this.discountApplied = 35;
-
+        this.discountApplied = 5;
+        this.restaurant = restaurant;
     }
 
     @Id
@@ -43,6 +46,14 @@ public class Booking {
         this.id = id;
     }
 
+    @Column(name = "timeDate")
+    public GregorianCalendar getTimeDate() {
+        return timeDate;
+    }
+
+    public void setTimeDate(GregorianCalendar timeDate) {
+        this.timeDate = timeDate;
+    }
 
     @Column(name = "capacity")
     public int getCapacity() {
@@ -53,24 +64,18 @@ public class Booking {
         this.capacity = capacity;
     }
 
-    @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
-    @ManyToMany
-    @JoinTable(name = "customer_booking",
-            joinColumns = {@JoinColumn(name = "booking_id", nullable = false, updatable = false)},
-            inverseJoinColumns = {@JoinColumn(name = "customer_id", nullable = false, updatable = false)})
-
-    public List<Customer> getCustomers() {
-        return customers;
+    @ManyToOne
+    @JoinColumn(name = "customer_id")
+    public Customer getCustomer() {
+        return customer;
     }
 
-    public void setCustomers(List<Customer> customers) {
-        this.customers = customers;
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
     }
 
-    public void addCustomers(Customer customer){ this.customers.add(customer);}
-
-
-    @Enumerated(value = EnumType.STRING)
+    @ManyToOne
+    @JoinColumn(name = "seating_id")
     public Seating getSeating() {
         return seating;
     }
@@ -98,7 +103,7 @@ public class Booking {
     }
 
     @ManyToOne
-    @JoinColumn(name = "restuarant_id")
+    @JoinColumn(name = "restaurant_id")
     public Restaurant getRestaurant() {
         return restaurant;
     }
@@ -107,9 +112,9 @@ public class Booking {
         this.restaurant = restaurant;
     }
 
-    public void checkAvailability(GregorianCalendar dateTime, int capacity) {
+    //public void checkAvailability(GregorianCalendar dateTime, int capacity) {
 
-    }
+    //}
 
     public void takeBooking(int party, Customer customer, Seating table) {
         if (table.getChairs() <= party) {

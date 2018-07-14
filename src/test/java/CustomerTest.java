@@ -12,7 +12,7 @@ public class CustomerTest {
 
     @Before
     public void setUp() throws Exception {
-        customer = new Customer("Richard", 100);
+        customer = new Customer("Richard", 100, 112334);
         booking = new Booking();
     }
 

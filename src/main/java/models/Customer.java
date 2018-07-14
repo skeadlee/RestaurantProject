@@ -16,13 +16,14 @@ public class Customer {
     private int loyaltyCard;
     private List<Booking> bookings;
     private Restaurant restaurant;
+    private Seating table;
 
     public Customer(){}
 
-    public Customer(String name, int wallet) {
+    public Customer(String name, int wallet, int loyaltyCard) {
         this.name = name;
         this.wallet = wallet;
-        this.loyaltyCard = 0;
+        this.loyaltyCard = loyaltyCard;
         this.bookings = new ArrayList<Booking>();
     }
 
@@ -64,11 +65,7 @@ public class Customer {
         this.loyaltyCard = loyaltyCard;
     }
 
-    @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
-    @ManyToMany
-    @JoinTable(name = "customer_booking",
-            joinColumns = {@JoinColumn(name = "customer_id", nullable = false, updatable = false)},
-            inverseJoinColumns = {@JoinColumn(name = "booking_id", nullable = false, updatable = false)})
+    @OneToMany(mappedBy = "customer", fetch = FetchType.LAZY)
     public List<Booking> getBookings() {
         return bookings;
     }
@@ -80,9 +77,19 @@ public class Customer {
     public void addBookings(Booking booking) { this.bookings.add(booking);}
 
     @ManyToOne
-    @JoinColumn(name = "restuarant_id")
+    @JoinColumn(name = "restaurant_id")
     public Restaurant getRestaurant() {
         return restaurant;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "seating_id")
+    public Seating getTable() {
+        return table;
+    }
+
+    public void setTable(Seating seating) {
+        this.table = seating;
     }
 
     public void setRestaurant(Restaurant restaurant) {
