@@ -23,10 +23,10 @@ public class RestaurantTest {
 //        booking1 = new Booking(4, customer1, Seating.TABLEFOUR);
 //    }
 
-    @Test
-    public void restaurantHasTables(){
-        assertEquals(12, restaurant.getTables().size());
-    }
+//    @Test
+//    public void restaurantHasTables(){
+//        assertEquals(12, restaurant.getTables().size());
+//    }
 
 //    @Test
 //    public void restaurantContainsTables() {

@@ -57,14 +57,16 @@ public class Restaurant {
         this.till = till;
     }
 
-    @OneToMany(mappedBy = "restaurant", fetch = FetchType.LAZY)
-    public List<Seating> getTables() {
-        return tables;
-    }
+//    @OneToMany(mappedBy = "restaurant", fetch = FetchType.EAGER)
+//    public List<Seating> getTables() {
+//        return tables;
+//    }
+//
+//    public void setTables(List<Seating> tables) {
+//        this.tables = tables;
+//    }
 
-    public void setTables(List<Seating> tables) {
-        this.tables = tables;
-    }
+
 
 //    public void makeTables(){
 //        Seating seating1 = Seating.TABLETWO;

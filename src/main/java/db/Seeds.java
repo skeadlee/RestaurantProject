@@ -2,7 +2,6 @@ package db;
 
 import models.*;
 
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.List;
@@ -91,14 +90,14 @@ public class Seeds {
         DBHelper.save(booking4);
         DBHelper.save(booking5);
 
-        restaurant.makeBooking(booking1);
-        restaurant.makeBooking(booking2);
-        restaurant.makeBooking(booking3);
-        restaurant.makeBooking(booking4);
-        restaurant.makeBooking(booking5);
+//        restaurant.makeBooking(booking1);
+//        restaurant.makeBooking(booking2);
+//        restaurant.makeBooking(booking3);
+//        restaurant.makeBooking(booking4);
+//        restaurant.makeBooking(booking5);
 
 
-        List<Booking> allBookings = DBHelper.getAll(Booking.class);
+        //List<Booking> allBookings = DBHelper.getAll(Booking.class);
 
 
     }
