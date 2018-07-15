@@ -1,0 +1,41 @@
+<p class="pageHeader">Edit Booking</p>
+
+<form action="/bookings/edit" method="post">
+
+    <input type="hidden" name="id" id="id" value="$booking.getId()">
+
+    <label for="customer">Name:</label>
+    <select name="customer" id="customer">
+        #foreach ($cust in $customers)
+            #if($cust.getId()==$customer.getId())
+               <option selected="true" value="$cust.getId()">$cust.getName()</option>
+            #else
+                <option value="$cust.getId()">$cust.getName()</option>
+            #end
+        #end
+    </select>
+
+    <label for="date">Date:</label>
+    <input class="inputBox" type="date" name="date" required="true" id="date" value="$prettyDate"/>
+
+    <label for="time">Time:</label>
+    <input class="inputBox" type="text" name="time" required="true" id="time" value="$prettyDate"/>
+
+    <label for="capacity">People:</label>
+    <select name="capacity" id="capacity">
+        #set($start = 0)
+        #set($end = 6)
+        #set($range = [$start..$end])
+        #foreach($i in $range)
+            #if($i == $booking.getCapacity())
+                <option selected="true" value="$i">$i Person</option>
+            #else
+                <option value="$i">$i People</option>
+            #end
+        #end
+    </select>
+
+    <input type="submit" value="Save" class="button"/>
+
+
+</form>
