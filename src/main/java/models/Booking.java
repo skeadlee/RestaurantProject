@@ -124,9 +124,14 @@ public class Booking {
 
     //}
 
-    public void takeBooking(int party, Customer customer, Seating table) {
-        if (table.getChairs() <= party) {
-            table.addCustomer(customer);
-        }
+//    public void takeBooking(int party, Customer customer, Seating table) {
+//        if (table.getChairs() <= party) {
+//            table.addCustomer(customer);
+//        }
+//    }
+
+    //still need to add all of the table allocation logic to this method
+    public static Seating checkForTable(List<Seating> tables, GregorianCalendar timeDate, int capacity){
+        return tables.get(0);
     }
 }

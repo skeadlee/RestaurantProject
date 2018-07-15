@@ -16,7 +16,7 @@ public class Customer {
     private int loyaltyCard;
     private List<Booking> bookings;
     private Restaurant restaurant;
-    private Seating table;
+    //private Seating table;
 
     public Customer(){}
 
@@ -82,15 +82,15 @@ public class Customer {
         return restaurant;
     }
 
-    @ManyToOne
-    @JoinColumn(name = "seating_id")
-    public Seating getTable() {
-        return table;
-    }
-
-    public void setTable(Seating seating) {
-        this.table = seating;
-    }
+//    @ManyToOne
+//    @JoinColumn(name = "seating_id")
+//    public Seating getTable() {
+//        return table;
+//    }
+//
+//    public void setTable(Seating seating) {
+//        this.table = seating;
+//    }
 
     public void setRestaurant(Restaurant restaurant) {
         this.restaurant = restaurant;

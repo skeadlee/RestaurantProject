@@ -11,7 +11,7 @@ public class Seating {
     private int id;
     private int chairs;
     private String name;
-    private List<Customer> diners;
+    //private List<Customer> diners;
     private Restaurant restaurant;
     private List<Booking> booking;
 
@@ -22,7 +22,7 @@ public class Seating {
 
         this.chairs = chairs;
         this.name = name;
-        this.diners = new ArrayList<Customer>();
+        //this.diners = new ArrayList<Customer>();
         this.booking = new ArrayList<>();
         this.restaurant = restaurant;
     }
@@ -55,33 +55,33 @@ public class Seating {
         this.name = name;
     }
 
-    @OneToMany
-    @JoinColumn(name = "customer_id", nullable = true)
-    public List<Customer> getDiners() {
-        return diners;
-    }
-
-    public void setDiners(List<Customer> diners) {
-        this.diners = diners;
-    }
-
-    public void addCustomer(Customer customers){
-        this.diners.add(customers);
-    }
-
-
-
-    @ManyToOne
-    @JoinColumn(name = "restaurant_id", nullable = false)
-    public Restaurant getRestaurant() {
-        return restaurant;
-    }
+//    @OneToMany
+//    @JoinColumn(name = "customer_id", nullable = true)
+//    public List<Customer> getDiners() {
+//        return diners;
+//    }
+//
+//    public void setDiners(List<Customer> diners) {
+//        this.diners = diners;
+//    }
+//
+//    public void addCustomer(Customer customers){
+//        this.diners.add(customers);
+//    }
 
 
 
-    public void setRestaurant(Restaurant restaurant) {
-        this.restaurant = restaurant;
-    }
+//    @ManyToOne
+//    @JoinColumn(name = "restaurant_id", nullable = false)
+//    public Restaurant getRestaurant() {
+//        return restaurant;
+//    }
+//
+//
+//
+//    public void setRestaurant(Restaurant restaurant) {
+//        this.restaurant = restaurant;
+//    }
 
     @OneToMany(mappedBy = "seating", fetch = FetchType.LAZY)
     public List<Booking> getBookings() {
@@ -92,7 +92,7 @@ public class Seating {
         this.booking = booking;
     }
 
-    public void addCustomersToTable(Customer customer){
-        this.diners.add(customer);
-    }
+    //public void addCustomersToTable(Customer customer){
+    //    this.diners.add(customer);
+    //}
 }
