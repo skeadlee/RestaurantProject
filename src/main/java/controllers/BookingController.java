@@ -10,6 +10,7 @@ import models.Seating;
 import spark.ModelAndView;
 import spark.template.velocity.VelocityTemplateEngine;
 
+import javax.persistence.criteria.CriteriaBuilder;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -80,6 +81,58 @@ public class BookingController {
             return null;
 
         }, new VelocityTemplateEngine());
+
+        //just trying this out - WORK IN PROGRESS!!!
+
+        //get specific booking - to view, update, delete...
+        get("bookings/edit/:id", (req, res) -> {
+            HashMap<String, Object> model = new HashMap<>();
+            int id = Integer.parseInt(req.params(":id"));
+
+            List<Customer> customers = DBHelper.getAll(Customer.class);
+            Booking booking = DBHelper.find(id, Booking.class);
+            Customer customer = DBHelper.find(booking.getCustomer().getId(), Customer.class);
+
+            model.put("template", "templates/bookings/edit.vtl");
+            model.put("booking", booking);
+            model.put("customer", customer);
+            model.put("customers", customers);
+            model.put("prettyDate", booking.prettyTimeDate());
+
+            return new ModelAndView(model, "templates/layout.vtl");
+        }, new VelocityTemplateEngine());
+
+        //edits current booking
+        post("bookings/edit", (req, res) ->{
+            int id = Integer.parseInt(req.queryParams("id"));
+            Booking booking = DBHelper.find(id, Booking.class);
+
+            int customerId = Integer.parseInt(req.queryParams("customer"));
+            String date = req.queryParams("date");
+            String time = req.queryParams("time");
+            int capacity = Integer.parseInt(req.queryParams("capacity"));
+
+            Customer customer = DBCustomer.getCustomer(customerId);
+
+            try {
+                Calendar calendar = new GregorianCalendar(TimeZone.getTimeZone("GMT"));
+                SimpleDateFormat formatter = new SimpleDateFormat("yyyy-mm-dd");
+                Date bookingDate = formatter.parse(date);
+
+                calendar.setTime(bookingDate);
+                booking.setTimeDate((GregorianCalendar)calendar);
+            } catch(ParseException e) {
+                e.printStackTrace();
+            }
+            booking.setCustomer(customer);
+            booking.setCapacity(capacity);
+
+            DBHelper.save(booking);
+
+            res.redirect("/bookings");
+            return null;
+        },new VelocityTemplateEngine());
+
 
 
 
