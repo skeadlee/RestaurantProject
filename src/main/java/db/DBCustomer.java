@@ -1,5 +1,6 @@
 package db;
 
+import models.Booking;
 import models.Customer;
 import models.Restaurant;
 import org.hibernate.Criteria;
@@ -9,7 +10,10 @@ import org.hibernate.Transaction;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 
+import java.awt.print.Book;
 import java.util.List;
+
+import static db.DBHelper.getList;
 
 public class DBCustomer {
 
@@ -48,6 +52,13 @@ public class DBCustomer {
         }
 
         return customer;
+    }
+
+    public static List<Booking> getBookingsForCustomer(Customer customer){
+        session = HibernateUtil.getSessionFactory().openSession();
+        Criteria cr = session.createCriteria(Booking.class);
+        cr.add(Restrictions.eq("customer", customer));
+        return getList(cr);
     }
 
 
