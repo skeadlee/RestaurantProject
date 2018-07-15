@@ -48,7 +48,7 @@ public class BookingController {
             return new ModelAndView(model, "templates/layout.vtl");
         }, new VelocityTemplateEngine());
 
-        //adds new booking to db
+        //saves new booking to db
         post("/bookings", (req, res) -> {
             int customerId = Integer.parseInt(req.queryParams("customer"));
             String date = req.queryParams("date");
