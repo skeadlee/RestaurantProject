@@ -38,6 +38,12 @@ public class CustomerController {
             return new ModelAndView(model, "templates/layout.vtl");
         }, new VelocityTemplateEngine());
 
+            get("customers/new", (req, res) ->{
+                Map<String, Object> model = new HashMap<>();
+                model.put("template", "templates/customers/create.vtl");
+                return new ModelAndView(model, "templates/layout.vtl");
+            }, new VelocityTemplateEngine());
+
         get("/customers/:id", (req, res) -> {
             String stringInt = req.params(":id");
             Integer idInt = Integer.parseInt(stringInt);
@@ -49,6 +55,8 @@ public class CustomerController {
 
             return new ModelAndView(model, "templates/layout.vtl");
         }, new VelocityTemplateEngine());
+
+
 
         post("/customers/:id", (req, res) -> {
             String stringInt = req.params(":id");
@@ -63,6 +71,18 @@ public class CustomerController {
             res.redirect("/customers");
             return null;
         }, new VelocityTemplateEngine());
+
+        post("/customers", (req, res) -> {
+            String name = req.queryParams("name");
+            int wallet = Integer.parseInt(req.queryParams("wallet"));
+            int loyaltyCard = Integer.parseInt(req.queryParams("loyaltyCard"));
+
+            Customer customer = new Customer(name, wallet, loyaltyCard);
+            DBHelper.save(customer);
+            res.redirect("/customers");
+            return null;
+        }, new VelocityTemplateEngine());
+
 
     }
 }
