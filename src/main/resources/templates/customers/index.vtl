@@ -12,8 +12,9 @@
     #foreach($customer in $customers)
     <tr>
         <td>$customer.getId()</td>
-        <td>$customer.getName()</td>
+        <td><a href="customers/$customer.getId()">$customer.getName()</a></td>
         <td>$customer.getLoyaltyCard()</td>
+        <!--Still to show bookings-->
     </tr>
     #end
 </table>

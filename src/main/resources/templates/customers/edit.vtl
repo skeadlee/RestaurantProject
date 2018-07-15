@@ -1,0 +1,14 @@
+<p class="pageHeader">Edit Customer -</p>
+
+<form action="/customers/$customer.getId()" method="post">
+
+    <label for="name">Name</label>
+    <input type="text" class="inputBox" name="name" required="true" value="$customer.getName()">
+
+    <label for="loyaltyCard">Loyalty Card Number</label>
+    <input type="text" class="inputBox" name="loyaltyCard" required="true" value="$customer.getLoyaltyCard()">
+
+    <input type="submit" value="Save" class="button">
+
+</form>
+<a href="/customers/$customer.getId()" class="button center">Cancel</a>
