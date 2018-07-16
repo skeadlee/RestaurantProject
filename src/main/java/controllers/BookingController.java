@@ -133,6 +133,17 @@ public class BookingController {
             return null;
         },new VelocityTemplateEngine());
 
+        //deletes booking
+        post("bookings/:id/delete", (req, res) ->{
+            int id = Integer.parseInt(req.params(":id"));
+            Booking booking = DBHelper.find(id, Booking.class);
+
+            DBHelper.delete(booking);
+
+            res.redirect("/bookings");
+            return null;
+        }, new VelocityTemplateEngine());
+
 
 
 
