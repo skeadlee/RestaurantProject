@@ -1,0 +1,11 @@
+.pageHeader{
+  font-family: 'Raleway', sans-serif;
+}
+
+.table {
+  border: 2px solid #FFFFFF;
+  width: 100%;
+  text-align: center;
+  border-collapse: collapse;
+  font-family: 'Slabo 27px', serif;
+}
