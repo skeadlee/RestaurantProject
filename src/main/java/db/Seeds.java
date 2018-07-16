@@ -4,6 +4,7 @@ import models.*;
 
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.List;
 
 public class Seeds {
 
@@ -88,6 +89,8 @@ public class Seeds {
         DBHelper.save(booking3);
         DBHelper.save(booking4);
         DBHelper.save(booking5);
+
+        List<Booking> bookings = DBCustomer.getBookingsForCustomer(customer1);
 
 //        restaurant.makeBooking(booking1);
 //        restaurant.makeBooking(booking2);

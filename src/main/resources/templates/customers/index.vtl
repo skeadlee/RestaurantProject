@@ -1,0 +1,25 @@
+<p class = "pageHeader">Customers</p>
+
+<div class="container">
+
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Loyalty Card No.</th>
+        <th>Bookings</th>
+    </tr>
+    #foreach($customer in $customers)
+    <tr>
+        <td>$customer.getId()</td>
+        <td><a href="customers/$customer.getId()">$customer.getName()</a></td>
+        <td>$customer.getLoyaltyCard()</td>
+        <!--Still to show bookings-->
+    </tr>
+    #end
+</table>
+</div>
+
+<a href="/customers/new">New Customer</a>
+
+<a href="/bookings">All Bookings</a>

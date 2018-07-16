@@ -32,7 +32,6 @@ public class DBHelper {
         try {
             transaction = session.beginTransaction();
             results = criteria.list();
-            ;
             transaction.commit();
         } catch (HibernateException ex) {
             transaction.rollback();

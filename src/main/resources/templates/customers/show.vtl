@@ -1,0 +1,16 @@
+<a href="/customers">All Customers</a>
+
+<p class="pageHeader">Customer -</p>
+
+<div>
+    <p>Customer ID: $customer.getId()</p>
+    <p>Name: $customer.getName()</p>
+    <p>Loyalty Card No: $customer.getLoyaltyCard()</p>
+    <p><a href="/customers/$customer.getId()/bookings">Bookings</a></p>
+</div>
+
+<a href="/customers/$customer.getId()/edit">Edit Customer</a>
+
+<form action="/customers/$customer.getId()/delete" method="post">
+    <input type="submit" value="Delete" class="button center">
+</form>

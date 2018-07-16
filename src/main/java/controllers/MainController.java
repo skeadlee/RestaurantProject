@@ -10,7 +10,7 @@ public class MainController {
         staticFileLocation("/public");
         BookingController bookingController = new BookingController();
         //RestaurantController restaurantController = new RestaurantController();
-        //CustomerController customerController = new CustomerController();
+        CustomerController customerController = new CustomerController();
         Seeds.seedData();
     }
 }
