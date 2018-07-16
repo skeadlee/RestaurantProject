@@ -5,6 +5,7 @@ body {
 }
 
 div.pageTitle {
+
     text-decoration: underline;
 }
 
@@ -30,4 +31,8 @@ a:hover {
     border: 4px dotted;
     padding: 2%;
     margin-top: 2%;
+}
+
+th {
+    padding-bottom: 2%;
 }
