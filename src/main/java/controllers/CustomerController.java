@@ -56,6 +56,17 @@ public class CustomerController {
             return new ModelAndView(model, "templates/layout.vtl");
         }, new VelocityTemplateEngine());
 
+        post("/customers", (req, res) -> {
+                String name = req.queryParams("name");
+                int wallet = Integer.parseInt(req.queryParams("wallet"));
+                int loyaltyCard = Integer.parseInt(req.queryParams("loyaltyCard"));
+
+                Customer customer = new Customer(name, wallet, loyaltyCard);
+                DBHelper.save(customer);
+                res.redirect("/customers");
+                return null;
+            }, new VelocityTemplateEngine());
+
         post("/customers/:id/delete", (req, res) -> {
             int id = Integer.parseInt(req.params(":id"));
             Customer customerDelete = DBHelper.find(id, Customer.class);
@@ -78,16 +89,7 @@ public class CustomerController {
             return null;
         }, new VelocityTemplateEngine());
 
-        post("/customers", (req, res) -> {
-            String name = req.queryParams("name");
-            int wallet = Integer.parseInt(req.queryParams("wallet"));
-            int loyaltyCard = Integer.parseInt(req.queryParams("loyaltyCard"));
 
-            Customer customer = new Customer(name, wallet, loyaltyCard);
-            DBHelper.save(customer);
-            res.redirect("/customers");
-            return null;
-        }, new VelocityTemplateEngine());
 
 
     }
