@@ -14,6 +14,7 @@
             <th>Loyalty Card:</th>
             <th>Price Per Head:</th>
             <th>Discount Applied:</th>
+            <th></th>
         </tr>
         #foreach($booking in $bookings)
         <tr>
@@ -24,6 +25,14 @@
             <td>$booking.getCustomer().getLoyaltyCard()</td>
             <td>$booking.getPricePerHead()</td>
             <td>$booking.getDiscountApplied()</td>
+            <td>
+                <a href="/bookings/edit/$booking.getId()">Edit</a>
+            </td>
+            <td>
+                <form action="/bookings/$booking.getId()/delete" method="post">
+                    <input type="submit" value="Delete" class="button"/>
+                </form>
+            </td>
         </tr>
         #end
     </table>
