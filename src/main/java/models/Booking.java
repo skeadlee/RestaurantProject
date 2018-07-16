@@ -55,7 +55,7 @@ public class Booking {
     }
 
     public String prettyTimeDate(){
-        DateFormat formatter = new SimpleDateFormat("dd-MMM-yyyy hh:mm");
+        DateFormat formatter = new SimpleDateFormat("dd-MMM-yyyy HH:MM");
         formatter.setLenient(false);
         return formatter.format(this.timeDate.getTime());
     }

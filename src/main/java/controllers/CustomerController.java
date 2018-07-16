@@ -1,6 +1,8 @@
 package controllers;
 
+import db.DBCustomer;
 import db.DBHelper;
+import models.Booking;
 import models.Customer;
 import spark.ModelAndView;
 import spark.template.velocity.VelocityTemplateEngine;
@@ -35,6 +37,21 @@ public class CustomerController {
             model.put("customer", customer);
             model.put("template", "templates/customers/edit.vtl");
 
+
+            return new ModelAndView(model, "templates/layout.vtl");
+        }, new VelocityTemplateEngine());
+
+        get("/customers/:id/bookings", (req, res) -> {
+            String stringInt = req.params(":id");
+            Integer intId = Integer.parseInt(stringInt);
+            Customer customer = DBHelper.find(intId, Customer.class);
+            List<Booking> bookings = DBCustomer.getBookingsForCustomer(customer);
+
+            Map<String, Object> model = new HashMap<>();
+            model.put("customer", customer);
+            model.put("bookings", bookings);
+            model.put("template", "templates/customers/bookings.vtl");
+
             return new ModelAndView(model, "templates/layout.vtl");
         }, new VelocityTemplateEngine());
 
@@ -44,7 +61,16 @@ public class CustomerController {
                 return new ModelAndView(model, "templates/layout.vtl");
             }, new VelocityTemplateEngine());
 
-        get("/customers/:id", (req, res) -> {
+            get("customers/frequent", (req, res) ->{
+                List<Customer> customers = DBCustomer.orderByFrequency();
+                Map<String, Object> model = new HashMap<>();
+                model.put("customers", customers);
+                model.put("template", "templates/customers/frequency.vtl");
+                return new ModelAndView(model, "templates/layout.vtl");
+            }, new VelocityTemplateEngine());
+
+
+            get("/customers/:id", (req, res) -> {
             String stringInt = req.params(":id");
             Integer idInt = Integer.parseInt(stringInt);
             Customer customer = DBHelper.find(idInt, Customer.class);
@@ -88,6 +114,7 @@ public class CustomerController {
             res.redirect("/customers");
             return null;
         }, new VelocityTemplateEngine());
+
 
 
 

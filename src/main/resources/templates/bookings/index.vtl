@@ -1,19 +1,21 @@
-<h3 class="pageHeader">Bookings</h3>
-
-<div>
-    <a href="/bookings/new" class="button center">New Booking</a>
+<div class="pageTitle">
+    <h1>Bookings</h1>
 </div>
 
 <div class="container">
-    <table>
+    <div>
+        <a class="link hover" href="/bookings/new" class="button center">New Booking</a>
+    </div>
+
+    <table class="table">
         <tr>
             <th>Date and Time of Booking:</th>
             <th>Name:</th>
-            <th>Table Number:</th>
-            <th>Number of Guests:</th>
+            <th>Table:</th>
+            <th>Guests:</th>
             <th>Loyalty Card:</th>
             <th>Price Per Head:</th>
-            <th>Discount Applied:</th>
+            <th>Discount:</th>
             <th></th>
         </tr>
         #foreach($booking in $bookings)
@@ -26,7 +28,7 @@
             <td>$booking.getPricePerHead()</td>
             <td>$booking.getDiscountApplied()</td>
             <td>
-                <a href="/bookings/edit/$booking.getId()">Edit</a>
+                <a class="link hover" href="/bookings/edit/$booking.getId()">Edit</a>
             </td>
             <td>
                 <form action="/bookings/$booking.getId()/delete" method="post">
@@ -37,3 +39,5 @@
         #end
     </table>
 </div>
+
+<a href="/customers">All Customers</a>

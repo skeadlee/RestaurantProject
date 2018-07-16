@@ -8,6 +8,7 @@ import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Order;
+import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 
 import java.awt.print.Book;
@@ -55,11 +56,43 @@ public class DBCustomer {
     }
 
     public static List<Booking> getBookingsForCustomer(Customer customer){
+        List<Booking> bookings = null;
         session = HibernateUtil.getSessionFactory().openSession();
+        try{
         Criteria cr = session.createCriteria(Booking.class);
         cr.add(Restrictions.eq("customer", customer));
-        return getList(cr);
+        bookings = cr.list();
+
+    } catch (HibernateException ex) {
+        ex.printStackTrace();
+    } finally {
+        session.close();
+    } return bookings;
     }
+
+
+    //We'll need to add some sort of history of visits
+    //Then check through this code to make sure it actually does what we think it should do!
+    public static List<Customer> orderByFrequency(){
+        session = HibernateUtil.getSessionFactory().openSession();
+        List<Customer> customers = null;
+        try {
+            Criteria cr = session.createCriteria(Customer.class);
+            cr.createAlias("bookings", "bookings");
+            //cr.createAlias("bookings.id", "frequency");
+            cr.setProjection(Projections.projectionList()
+                    .add(Projections.groupProperty("name"))
+                    .add(Projections.count("bookings.id").as("frequency")));
+            cr.addOrder(Order.desc("frequency"));
+            customers = cr.list();
+        } catch (HibernateException e) {
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+        return customers;
+    }
+
 
 
 }

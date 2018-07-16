@@ -1,0 +1,16 @@
+<h1>Most Frequent Customers</h1>
+
+<table>
+    <tr>
+        <th>Name:</th>
+        <th>Number of Visits:</th>
+    </tr>
+
+    #foreach($customer in $customers)
+    <tr>
+        <td>$customer[0]</td>
+        <td>$customer[1]</td>
+    </tr>
+    #end
+
+</table>

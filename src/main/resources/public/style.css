@@ -1,11 +1,38 @@
-.pageHeader{
-  font-family: 'Raleway', sans-serif;
+body {
+  background-color: #262626;
+  color: white;
+  font-family: 'Comfortaa', cursive;
+}
+
+div.pageTitle {
+
+    text-decoration: underline;
+}
+
+div.form {
+    font-weight: bold;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.link {
+    color: #4286f4;
+}
+
+a:hover {
+    color: #a93384;
+    font-size: 105%;
+}
+
+.new {
+ padding-bottom: 5%;
 }
 
 .table {
-  border: 2px solid #FFFFFF;
-  width: 100%;
-  text-align: center;
-  border-collapse: collapse;
-  font-family: 'Slabo 27px', serif;
+    border: 4px dotted;
+    padding: 2%;
+    margin-top: 2%;
+}
+
+th {
+    padding-bottom: 2%;
 }
