@@ -19,7 +19,16 @@
     <input class="inputBox" type="date" name="date" required="true" id="date" value="$prettyDate"/>
 
     <label for="time">Time:</label>
-    <input class="inputBox" type="text" name="time" required="true" id="time" value="$prettyDate"/>
+    <select name="time" id="time">
+        #set($range = ["17:30", "18:00", "18:30", "19:00", "19:30", "20:00", "20:30", "21:00"])
+        #foreach($i in $range)
+            #if($i == $time)
+                <option selected="true" value="$i">$i</option>
+            #else
+                <option value="$i">$i</option>
+            #end
+        #end
+    </select>
 
     <label for="capacity">People:</label>
     <select name="capacity" id="capacity">

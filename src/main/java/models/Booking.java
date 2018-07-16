@@ -55,10 +55,24 @@ public class Booking {
     }
 
     public String prettyTimeDate(){
-        DateFormat formatter = new SimpleDateFormat("dd-MMM-yyyy HH:MM");
+        DateFormat formatter = new SimpleDateFormat("dd-M-yyyy HH:mm");
         formatter.setLenient(false);
         return formatter.format(this.timeDate.getTime());
     }
+
+    public String inputDateFormat(){
+        DateFormat formatter = new SimpleDateFormat("YYYY-MM-dd");
+        formatter.setLenient(false);
+        return formatter.format(this.timeDate.getTime());
+    }
+
+    public String inputTimeFormat(){
+        DateFormat formatter = new SimpleDateFormat("HH:mm");
+        formatter.setLenient(false);
+        return formatter.format(this.timeDate.getTime());
+    }
+
+
 
     @Column(name = "capacity")
     public int getCapacity() {
