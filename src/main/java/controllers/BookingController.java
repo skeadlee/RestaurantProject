@@ -10,7 +10,6 @@ import models.Seating;
 import spark.ModelAndView;
 import spark.template.velocity.VelocityTemplateEngine;
 
-import javax.persistence.criteria.CriteriaBuilder;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -50,6 +49,7 @@ public class BookingController {
         }, new VelocityTemplateEngine());
 
         //saves new booking to db
+        //HH:MM FOR 24h
         post("/bookings", (req, res) -> {
             int customerId = Integer.parseInt(req.queryParams("customer"));
             String date = req.queryParams("date");
