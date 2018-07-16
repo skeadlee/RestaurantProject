@@ -90,7 +90,9 @@ public class Seeds {
         DBHelper.save(booking4);
         DBHelper.save(booking5);
 
-        List<Booking> bookings = DBCustomer.getBookingsForCustomer(customer1);
+        List<Booking> bookings = DBBooking.getBookingsOnDate((GregorianCalendar)calendar3);
+
+
 
 //        restaurant.makeBooking(booking1);
 //        restaurant.makeBooking(booking2);
