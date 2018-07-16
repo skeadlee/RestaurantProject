@@ -61,7 +61,16 @@ public class CustomerController {
                 return new ModelAndView(model, "templates/layout.vtl");
             }, new VelocityTemplateEngine());
 
-        get("/customers/:id", (req, res) -> {
+            get("customers/frequent", (req, res) ->{
+                List<Customer> customers = DBCustomer.orderByFrequency();
+                Map<String, Object> model = new HashMap<>();
+                model.put("customers", customers);
+                model.put("template", "templates/customers/frequency.vtl");
+                return new ModelAndView(model, "templates/layout.vtl");
+            }, new VelocityTemplateEngine());
+
+
+            get("/customers/:id", (req, res) -> {
             String stringInt = req.params(":id");
             Integer idInt = Integer.parseInt(stringInt);
             Customer customer = DBHelper.find(idInt, Customer.class);
@@ -105,6 +114,7 @@ public class CustomerController {
             res.redirect("/customers");
             return null;
         }, new VelocityTemplateEngine());
+
 
 
 
