@@ -34,4 +34,10 @@ public class CustomerTest {
         customer.addBookings(booking);
         assertEquals(1, customer.getBookings().size());
     }
+
+    @Test
+    public void canGetNumberOfVisits(){
+        customer.addBookings(booking);
+        assertEquals(1, customer.numberOfVisits());
+    }
 }

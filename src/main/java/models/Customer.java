@@ -104,4 +104,9 @@ public class Customer {
         setLoyaltyCard(loyaltyCard += i);
     }
 
+    public int numberOfVisits(){
+        return this.bookings.size();
+    }
+
+
 }
