@@ -56,7 +56,13 @@ public class CustomerController {
             return new ModelAndView(model, "templates/layout.vtl");
         }, new VelocityTemplateEngine());
 
-
+        post("/customers/:id/delete", (req, res) -> {
+            int id = Integer.parseInt(req.params(":id"));
+            Customer customerDelete = DBHelper.find(id, Customer.class);
+            DBHelper.delete(customerDelete);
+            res.redirect("/customers");
+            return null;
+        }, new VelocityTemplateEngine());
 
         post("/customers/:id", (req, res) -> {
             String stringInt = req.params(":id");

@@ -1,6 +1,8 @@
 package models;
 
 import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -66,6 +68,7 @@ public class Customer {
     }
 
     @OneToMany(mappedBy = "customer", fetch = FetchType.LAZY)
+    @OnDelete(action = OnDeleteAction.CASCADE)
     public List<Booking> getBookings() {
         return bookings;
     }
