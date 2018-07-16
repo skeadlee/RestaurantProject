@@ -1,7 +1,7 @@
 body {
-  background-color: black;
+  background-color: #262626;
   color: white;
-  font-family: "courier", monospace;
+  font-family: 'Comfortaa', cursive;
 }
 
 div.pageTitle {
@@ -11,7 +11,7 @@ div.pageTitle {
 
 div.form {
     font-weight: bold;
-    font-family: "courier", monospace;
+    font-family: 'Montserrat', sans-serif;
 }
 
 .link {
