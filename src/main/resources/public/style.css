@@ -1,11 +1,11 @@
 body {
-  background: black;
+  background-color: black;
   color: white;
   font-family: "courier", monospace;
 }
 
 div.pageTitle {
-
+    text-decoration: underline;
 }
 
 div.form {
@@ -19,8 +19,15 @@ div.form {
 
 a:hover {
     color: #a93384;
+    font-size: 105%;
+}
+
+.new {
+ padding-bottom: 5%;
 }
 
 .table {
     border: 4px dotted;
+    padding: 2%;
+    margin-top: 2%;
 }
