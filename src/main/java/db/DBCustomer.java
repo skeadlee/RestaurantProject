@@ -8,6 +8,7 @@ import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Order;
+import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 
 import java.awt.print.Book;
@@ -77,6 +78,11 @@ public class DBCustomer {
         List<Customer> customers = null;
         try {
             Criteria cr = session.createCriteria(Customer.class);
+            cr.createAlias("bookings", "bookings");
+            //cr.createAlias("bookings.id", "frequency");
+            cr.setProjection(Projections.projectionList()
+                    .add(Projections.groupProperty("name"))
+                    .add(Projections.count("bookings.id").as("frequency")));
             cr.addOrder(Order.desc("frequency"));
             customers = cr.list();
         } catch (HibernateException e) {
