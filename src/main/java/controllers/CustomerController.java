@@ -1,6 +1,8 @@
 package controllers;
 
+import db.DBCustomer;
 import db.DBHelper;
+import models.Booking;
 import models.Customer;
 import spark.ModelAndView;
 import spark.template.velocity.VelocityTemplateEngine;
@@ -34,6 +36,21 @@ public class CustomerController {
             Map<String, Object> model = new HashMap<>();
             model.put("customer", customer);
             model.put("template", "templates/customers/edit.vtl");
+
+
+            return new ModelAndView(model, "templates/layout.vtl");
+        }, new VelocityTemplateEngine());
+
+        get("/customers/:id/bookings", (req, res) -> {
+            String stringInt = req.params(":id");
+            Integer intId = Integer.parseInt(stringInt);
+            Customer customer = DBHelper.find(intId, Customer.class);
+            List<Booking> bookings = DBCustomer.getBookingsForCustomer(customer);
+
+            Map<String, Object> model = new HashMap<>();
+            model.put("customer", customer);
+            model.put("bookings", bookings);
+            model.put("template", "templates/customers/bookings.vtl");
 
             return new ModelAndView(model, "templates/layout.vtl");
         }, new VelocityTemplateEngine());

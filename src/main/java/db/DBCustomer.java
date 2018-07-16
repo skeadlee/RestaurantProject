@@ -55,10 +55,18 @@ public class DBCustomer {
     }
 
     public static List<Booking> getBookingsForCustomer(Customer customer){
+        List<Booking> bookings = null;
         session = HibernateUtil.getSessionFactory().openSession();
+        try{
         Criteria cr = session.createCriteria(Booking.class);
         cr.add(Restrictions.eq("customer", customer));
-        return getList(cr);
+        bookings = cr.list();
+
+    } catch (HibernateException ex) {
+        ex.printStackTrace();
+    } finally {
+        session.close();
+    } return bookings;
     }
 
 
