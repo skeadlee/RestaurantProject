@@ -51,4 +51,23 @@ public class DBCustomer {
     }
 
 
+    //We'll need to add some sort of history of visits
+    //Then check through this code to make sure it actually does what we think it should do!
+    public static List<Customer> orderByFrequency(){
+        session = HibernateUtil.getSessionFactory().openSession();
+        List<Customer> customers = null;
+        try {
+            Criteria cr = session.createCriteria(Customer.class);
+            cr.addOrder(Order.desc("frequency"));
+            customers = cr.list();
+        } catch (HibernateException e) {
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+        return customers;
+    }
+
+
+
 }
