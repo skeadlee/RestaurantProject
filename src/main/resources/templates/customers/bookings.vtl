@@ -1,12 +1,19 @@
 <p class="pageHeader">$customer.getName() Bookings</p>
 
+<table>
+<tr>
+    <th>Date & Time</th>
+    <th>Capacity</th>
+    <th>Table of</th>
+    <th>Discount Applied</th>
+</tr>
 #foreach($booking in $bookings)
-<h6>Date and Time:</h6>
-<p>$booking.prettyTimeDate()</p>
-<h6>Capacity</h6>
-<p>$booking.getCapacity()</p>
-<h6>Price Per Head:</h6>
-<p>$booking.getPricePerHead()</p>
+<tr>
+    <td>$booking.prettyTimeDate()</td>
+    <td>$booking.getCapacity()</td>
+    <td>$booking.getSeating().getChairs()</td>
+    <td>$booking.getDiscountApplied()</td>
+</tr>
 #end
-
+</table>
 <a href="/customers/$customer.getId()">$customer.getName() Profile</a>
