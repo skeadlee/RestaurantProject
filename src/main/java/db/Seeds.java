@@ -3,6 +3,7 @@ package db;
 import models.*;
 
 import java.util.Calendar;
+import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
 
@@ -77,20 +78,27 @@ public class Seeds {
         Calendar calendar3 = new GregorianCalendar(2018, 7, 1, 19, 00);
         Calendar calendar4 = new GregorianCalendar(2018, 7, 1, 19, 30);
         Calendar calendar5 = new GregorianCalendar(2018, 7, 1, 19, 30);
+        Calendar calendar6 = new GregorianCalendar(2018, 7, 5, 20, 30);
+        Calendar calendar10 = new GregorianCalendar(2018, 7, 2, 10, 00);
 
         Booking booking1 = new Booking((GregorianCalendar)calendar1,2, customer1, seating1, restaurant);
         Booking booking2 = new Booking((GregorianCalendar)calendar2,2, customer2, seating2, restaurant);
         Booking booking3 = new Booking((GregorianCalendar)calendar3,4, customer3, seating7, restaurant);
         Booking booking4 = new Booking((GregorianCalendar)calendar4,4, customer4, seating8, restaurant);
         Booking booking5 = new Booking((GregorianCalendar)calendar5,6, customer5, seating11, restaurant);
+        Booking booking6 = new Booking((GregorianCalendar)calendar6, 4, customer4, seating10, restaurant);
 
         DBHelper.save(booking1);
         DBHelper.save(booking2);
         DBHelper.save(booking3);
         DBHelper.save(booking4);
         DBHelper.save(booking5);
+        DBHelper.save(booking6);
 
-        List<Booking> bookings = DBBooking.getBookingByDate(calendar1);
+
+        List<Booking> bookings = DBBooking.getBookingByDate(calendar1, calendar10);
+
+        List<Customer> customers = DBCustomer.getCustomersByDate(calendar1);
 
 //        restaurant.makeBooking(booking1);
 //        restaurant.makeBooking(booking2);

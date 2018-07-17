@@ -1,0 +1,20 @@
+<p>Bookings On This Day</p>
+
+<table>
+    <tr>
+        <th>Date and Time</th>
+        <th>Customer</th>
+        <th>Table Seating</th>
+        <th>No in Party</th>
+    </tr>
+    #foreach($booking in $bookings)
+    <tr>
+        <td>$booking.prettyTimeDate()</td>
+        <td>$booking.getCustomer().getName()</td>
+        <td>$booking.getSeating().getChairs()</td>
+        <td>$booking.getCapacity()</td>
+    </tr>
+#end
+</table>
+
+<a href="/bookings">Back to Bookings</a>
