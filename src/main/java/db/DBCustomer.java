@@ -12,6 +12,7 @@ import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 
 import java.awt.print.Book;
+import java.util.Calendar;
 import java.util.List;
 
 import static db.DBHelper.getList;
@@ -91,6 +92,20 @@ public class DBCustomer {
             session.close();
         }
         return customers;
+    }
+
+    public static List<Customer> getCustomersByDate(Calendar timeDate){
+        List<Customer> customers = null;
+        session = HibernateUtil.getSessionFactory().openSession();
+        try{
+            Criteria cr = session.createCriteria(Booking.class);
+            cr.add(Restrictions.ge("timeDate", timeDate));
+            customers = cr.list();
+        } catch (HibernateException ex) {
+            ex.printStackTrace();
+        } finally {
+            session.close();
+        } return customers;
     }
 
 

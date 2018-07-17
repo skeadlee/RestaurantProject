@@ -1,5 +1,6 @@
 package controllers;
 
+import db.DBBooking;
 import db.DBCustomer;
 import db.DBHelper;
 import db.DBRestaurant;
@@ -7,6 +8,7 @@ import models.Booking;
 import models.Customer;
 import models.Restaurant;
 import models.Seating;
+import org.hibernate.HibernateException;
 import spark.ModelAndView;
 import spark.template.velocity.VelocityTemplateEngine;
 
@@ -49,7 +51,7 @@ public class BookingController {
         }, new VelocityTemplateEngine());
 
         //saves new booking to db
-        //HH:MM FOR 24h
+        //HH:mm FOR 24h
         post("/bookings", (req, res) -> {
             int customerId = Integer.parseInt(req.queryParams("customer"));
             String date = req.queryParams("date");
@@ -61,10 +63,11 @@ public class BookingController {
             Customer customer = DBCustomer.getCustomer(customerId);
 
             try {
+                String dateTime = date + " " + time;
                 Calendar calendar = new GregorianCalendar(TimeZone.getTimeZone("GMT"));
 
-                SimpleDateFormat formatter = new SimpleDateFormat("yyyy-mm-dd");
-                Date bookingDate = formatter.parse(date);
+                SimpleDateFormat formatter = new SimpleDateFormat("yyyy-M-dd HH:mm");
+                Date bookingDate = formatter.parse(dateTime);
                 calendar.setTime(bookingDate);
 
                 List<Seating> allTables = DBHelper.getAll(Seating.class);
@@ -82,6 +85,35 @@ public class BookingController {
 
         }, new VelocityTemplateEngine());
 
+
+        post("/bookings/date", (req, res) -> {
+            String date = req.queryParams("date");
+            Calendar calendar = new GregorianCalendar();
+            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-M-dd");
+            Date bookingDate = null;
+            try {
+                bookingDate = formatter.parse(date);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+            calendar.setTime(bookingDate);
+
+            Calendar cal2 = (Calendar) calendar.clone();
+            cal2.add(Calendar.DATE, 1);
+
+
+            List<Booking> bookings = DBBooking.getBookingByDate(calendar, cal2);
+
+
+            HashMap<String, Object> model = new HashMap<>();
+            model.put("bookings", bookings);
+            model.put("template", "templates/bookings/date.vtl");
+
+            return new ModelAndView(model, "templates/layout.vtl");
+        }, new VelocityTemplateEngine());
+
+
+
         //just trying this out - WORK IN PROGRESS!!!
 
         //get specific booking - to view, update, delete...
@@ -97,7 +129,8 @@ public class BookingController {
             model.put("booking", booking);
             model.put("customer", customer);
             model.put("customers", customers);
-            model.put("prettyDate", booking.prettyTimeDate());
+            model.put("prettyDate", booking.inputDateFormat());
+            model.put("time", booking.inputTimeFormat());
 
             return new ModelAndView(model, "templates/layout.vtl");
         }, new VelocityTemplateEngine());
@@ -115,11 +148,13 @@ public class BookingController {
             Customer customer = DBCustomer.getCustomer(customerId);
 
             try {
+                String dateTime = date + " " + time;
                 Calendar calendar = new GregorianCalendar(TimeZone.getTimeZone("GMT"));
-                SimpleDateFormat formatter = new SimpleDateFormat("yyyy-mm-dd");
-                Date bookingDate = formatter.parse(date);
 
+                SimpleDateFormat formatter = new SimpleDateFormat("yyyy-M-dd HH:mm");
+                Date bookingDate = formatter.parse(dateTime);
                 calendar.setTime(bookingDate);
+
                 booking.setTimeDate((GregorianCalendar)calendar);
             } catch(ParseException e) {
                 e.printStackTrace();
