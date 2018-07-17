@@ -4,6 +4,27 @@ body {
   font-family: 'Comfortaa', cursive;
 }
 
+.nav-bar{
+  background-color: #e6e6e6;
+  width: 200%;
+  padding-left: 20px;
+  margin-left: -20px;
+  margin-top: -10px;
+}
+
+.nav-bar ul{
+  display: inline-flex;
+}
+
+.nav-bar li {
+  margin: 5px;
+  list-style-type: none;
+}
+
+.nav-bar a {
+  text-decoration: none;
+}
+
 div.pageTitle {
 
     text-decoration: underline;
