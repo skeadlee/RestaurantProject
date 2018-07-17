@@ -72,8 +72,6 @@ public class Booking {
         return formatter.format(this.timeDate.getTime());
     }
 
-
-
     @Column(name = "capacity")
     public int getCapacity() {
         return capacity;
