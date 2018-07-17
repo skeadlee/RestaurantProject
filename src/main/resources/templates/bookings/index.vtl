@@ -39,12 +39,13 @@
         #end
     </table>
 </div>
+<div class="bookingDiv">
+<a href="/customers" class="cust-button">All Customers</a>
 
-<a href="/customers">All Customers</a>
-
-<form action="/bookings/date" method="post">
+<form action="/bookings/date" method="post" id="dateForm">
 
     <label for="date">Date:</label>
     <input class="inputBox" type="date" name="date" required="true" id="date"/>
     <input type="submit" value="Check Date" class="button"/>
 </form>
+</div>

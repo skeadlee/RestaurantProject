@@ -13,7 +13,7 @@
     #foreach($customer in $customers)
     <tr>
         <td>$customer.getId()</td>
-        <td><a href="customers/$customer.getId()">$customer.getName()</a></td>
+        <td><a href="customers/$customer.getId()" class="tableA">$customer.getName()</a></td>
         <td>$customer.getLoyaltyCard()</td>
         <!--Still to show bookings-->
     </tr>
@@ -21,7 +21,8 @@
 </table>
 </div>
 </div>
+<div class="custButtons">
+<a href="/customers/new" class="cust-button">New Customer</a>
 
-<a href="/customers/new">New Customer</a>
-
-<a href="/bookings">All Bookings</a>
+<a href="/bookings" class="cust-button">All Bookings</a>
+</div>

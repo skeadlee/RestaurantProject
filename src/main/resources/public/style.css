@@ -31,8 +31,37 @@ a:hover {
     border: 4px dotted;
     padding: 2%;
     margin-top: 2%;
+    width: -webkit-fill-available;
+    white-space: nowrap;
+    text-align: center;
+}
+
+.tableA {
+  color: white;
+  text-decoration: none;
 }
 
 th {
     padding-bottom: 2%;
+}
+
+.cust-button{
+  background-color: #e6e6e6;
+border-radius: 2px;
+padding: 4px;
+text-decoration: none;
+}
+
+.custButtons{
+  display: inline-block;
+margin-top: 10px;
+}
+
+.bookingDiv {
+  display: -webkit-inline-box;
+    margin-top: 10px;
+}
+
+#dateForm {
+  padding-left: 10px;
 }
