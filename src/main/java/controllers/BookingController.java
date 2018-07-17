@@ -117,11 +117,13 @@ public class BookingController {
             Customer customer = DBCustomer.getCustomer(customerId);
 
             try {
+                String dateTime = date + " " + time;
                 Calendar calendar = new GregorianCalendar(TimeZone.getTimeZone("GMT"));
-                SimpleDateFormat formatter = new SimpleDateFormat("yyyy-mm-dd");
-                Date bookingDate = formatter.parse(date);
 
+                SimpleDateFormat formatter = new SimpleDateFormat("yyyy-M-dd HH:mm");
+                Date bookingDate = formatter.parse(dateTime);
                 calendar.setTime(bookingDate);
+
                 booking.setTimeDate((GregorianCalendar)calendar);
             } catch(ParseException e) {
                 e.printStackTrace();
