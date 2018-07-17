@@ -1,5 +1,6 @@
 package controllers;
 
+import db.DBBooking;
 import db.DBCustomer;
 import db.DBHelper;
 import db.DBRestaurant;
@@ -7,6 +8,7 @@ import models.Booking;
 import models.Customer;
 import models.Restaurant;
 import models.Seating;
+import org.hibernate.HibernateException;
 import spark.ModelAndView;
 import spark.template.velocity.VelocityTemplateEngine;
 
@@ -82,6 +84,35 @@ public class BookingController {
             return null;
 
         }, new VelocityTemplateEngine());
+
+
+        post("/bookings/date", (req, res) -> {
+            String date = req.queryParams("date");
+            Calendar calendar = new GregorianCalendar();
+            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-M-dd");
+            Date bookingDate = null;
+            try {
+                bookingDate = formatter.parse(date);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+            calendar.setTime(bookingDate);
+
+            Calendar cal2 = (Calendar) calendar.clone();
+            cal2.add(Calendar.DATE, 1);
+
+
+            List<Booking> bookings = DBBooking.getBookingByDate(calendar, cal2);
+
+
+            HashMap<String, Object> model = new HashMap<>();
+            model.put("bookings", bookings);
+            model.put("template", "templates/bookings/date.vtl");
+
+            return new ModelAndView(model, "templates/layout.vtl");
+        }, new VelocityTemplateEngine());
+
+
 
         //just trying this out - WORK IN PROGRESS!!!
 
