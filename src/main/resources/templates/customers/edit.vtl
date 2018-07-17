@@ -8,7 +8,9 @@
     <label for="loyaltyCard">Loyalty Card Number</label>
     <input type="text" class="inputBox" name="loyaltyCard" required="true" value="$customer.getLoyaltyCard()">
 
-    <input type="submit" value="Save" class="button">
+    <input type="submit" value="Save" class="saveButton">
 
 </form>
-<a href="/customers/$customer.getId()" class="button center">Cancel</a>
+<div class="cancelDiv">
+<a href="/customers/$customer.getId()" class="cancelbutton">Cancel</a>
+</div>

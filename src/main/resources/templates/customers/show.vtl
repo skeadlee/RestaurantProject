@@ -1,16 +1,17 @@
-<a href="/customers">All Customers</a>
-
+<div class="custButtons">
+<a href="/customers" class="cust-button">All Customers</a>
+</div>
 <p class="pageHeader">Customer -</p>
 
 <div>
     <p>Customer ID: $customer.getId()</p>
     <p>Name: $customer.getName()</p>
     <p>Loyalty Card No: $customer.getLoyaltyCard()</p>
-    <p><a href="/customers/$customer.getId()/bookings">Bookings</a></p>
+    <p><a href="/customers/$customer.getId()/bookings" class="cust-button">Bookings</a></p>
 </div>
 
-<a href="/customers/$customer.getId()/edit">Edit Customer</a>
+<a href="/customers/$customer.getId()/edit" class="saveButton">Edit Customer</a>
 
-<form action="/customers/$customer.getId()/delete" method="post">
-    <input type="submit" value="Delete" class="button center">
+<form action="/customers/$customer.getId()/delete" method="post" class="cancelDiv">
+    <input type="submit" value="Delete" class="cancelButton">
 </form>
