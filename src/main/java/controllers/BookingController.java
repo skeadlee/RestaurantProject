@@ -49,7 +49,7 @@ public class BookingController {
         }, new VelocityTemplateEngine());
 
         //saves new booking to db
-        //HH:MM FOR 24h
+        //HH:mm FOR 24h
         post("/bookings", (req, res) -> {
             int customerId = Integer.parseInt(req.queryParams("customer"));
             String date = req.queryParams("date");
@@ -61,10 +61,11 @@ public class BookingController {
             Customer customer = DBCustomer.getCustomer(customerId);
 
             try {
+                String dateTime = date + " " + time;
                 Calendar calendar = new GregorianCalendar(TimeZone.getTimeZone("GMT"));
 
-                SimpleDateFormat formatter = new SimpleDateFormat("yyyy-mm-dd");
-                Date bookingDate = formatter.parse(date);
+                SimpleDateFormat formatter = new SimpleDateFormat("yyyy-M-dd HH:mm");
+                Date bookingDate = formatter.parse(dateTime);
                 calendar.setTime(bookingDate);
 
                 List<Seating> allTables = DBHelper.getAll(Seating.class);
@@ -97,7 +98,8 @@ public class BookingController {
             model.put("booking", booking);
             model.put("customer", customer);
             model.put("customers", customers);
-            model.put("prettyDate", booking.prettyTimeDate());
+            model.put("prettyDate", booking.inputDateFormat());
+            model.put("time", booking.inputTimeFormat());
 
             return new ModelAndView(model, "templates/layout.vtl");
         }, new VelocityTemplateEngine());
