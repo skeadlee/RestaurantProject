@@ -44,7 +44,7 @@ div.form {
 
 a:hover {
     color: #a93384;
-    font-size: 105%;
+    font-size: 100%;
 }
 
 .new {
@@ -155,4 +155,10 @@ select{
 
 input#date.inputBox {
   font-size: .9em;
+}
+
+.bookingsLink {
+  color: #e6e6e6;
+  text-decoration: none;
+
 }
