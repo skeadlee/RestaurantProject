@@ -12,6 +12,7 @@ import org.hibernate.HibernateException;
 import spark.ModelAndView;
 import spark.template.velocity.VelocityTemplateEngine;
 
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -26,6 +27,12 @@ public class BookingController {
     public BookingController(){this.setupEndPoints();}
 
     public void setupEndPoints(){
+
+        //home page
+        get("/", (req, res) ->{
+            res.redirect("/bookings");
+            return null;
+        }, new VelocityTemplateEngine());
 
         //view all bookings
         get("/bookings", (req, res) -> {
@@ -45,6 +52,10 @@ public class BookingController {
 
             List<Customer> customers = DBHelper.getAll(Customer.class);
 
+            DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+            Date date = new Date();
+
+            model.put("today", dateFormat.format(date));
             model.put("template", "templates/bookings/create.vtl");
             model.put("customers", customers);
             return new ModelAndView(model, "templates/layout.vtl");
@@ -125,6 +136,10 @@ public class BookingController {
             Booking booking = DBHelper.find(id, Booking.class);
             Customer customer = DBHelper.find(booking.getCustomer().getId(), Customer.class);
 
+            DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+            Date date = new Date();
+
+            model.put("today", dateFormat.format(date));
             model.put("template", "templates/bookings/edit.vtl");
             model.put("booking", booking);
             model.put("customer", customer);
