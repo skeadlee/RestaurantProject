@@ -139,8 +139,13 @@ public class Booking {
 //        }
 //    }
 
-    //still need to add all of the table allocation logic to this method
     public static Seating checkForTable(List<Seating> tables, GregorianCalendar timeDate, int capacity){
+        //loop through available tables to check if seating is >= capacity
+        for (Seating table: tables) {
+            if (table.getChairs() >= capacity){
+                return table;
+            }
+        }
         return tables.get(0);
     }
 }
