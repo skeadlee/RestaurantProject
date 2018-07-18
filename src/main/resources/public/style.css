@@ -119,6 +119,16 @@ form {
   text-decoration: none;
   border-radius: 2px;
   padding: 3px;
+  font-size: 13px;
+}
+
+.saveButtonIndex {
+  background-color: green;
+  color: white;
+  text-decoration: none;
+  border-radius: 2px;
+  padding: 6px;
+  font-size: 14px;
 }
 
 input.cancelButton {
@@ -127,4 +137,18 @@ input.cancelButton {
   text-decoration: none;
   border-radius: 2px;
   padding: 4px;
+}
+
+.editButton{
+  text-decoration: none;
+  color: #0066ff;
+}
+
+select{
+  font-size: .8em;
+}
+
+
+input#date.inputBox {
+  font-size: .9em;
 }
