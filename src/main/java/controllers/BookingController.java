@@ -31,7 +31,7 @@ public class BookingController {
         get("/bookings", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
 
-            List<Booking> bookings = DBHelper.getAll(Booking.class);
+            List<Booking> bookings = DBBooking.getAllByDate();
 
             model.put("template", "templates/bookings/index.vtl");
             model.put("bookings", bookings);

@@ -2,7 +2,7 @@
 
 <div class="container">
     <div>
-        <a class="link hover" href="/bookings/new" class="button center">New Booking</a>
+        <a class="saveButtonIndex" href="/bookings/new">New Booking</a>
     </div>
 
     <table class="table">
@@ -26,11 +26,11 @@
             <td>$booking.getPricePerHead()</td>
             <td>$booking.getDiscountApplied()</td>
             <td>
-                <a class="link hover" href="/bookings/edit/$booking.getId()">Edit</a>
+                <a href="/bookings/edit/$booking.getId()" class="editButton">Edit</a>
             </td>
             <td>
                 <form action="/bookings/$booking.getId()/delete" method="post">
-                    <input type="submit" value="Delete" class="button"/>
+                    <input type="submit" value="Delete" class="cancelButton"/>
                 </form>
             </td>
         </tr>

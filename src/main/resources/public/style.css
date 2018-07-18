@@ -1,12 +1,13 @@
 body {
-  background-color: #262626;
-  color: white;
+  background: linear-gradient(#262626, #595959);
+  color: #e6e6e6;
   font-family: 'Comfortaa', cursive;
+  padding-bottom: 100%;
 }
 
 .nav-bar{
-  background-color: #e6e6e6;
-  width: 200%;
+  background: linear-gradient(to right, #e6e6e6 , #bfbfbf);
+  width: 100%;
   padding-left: 20px;
   margin-left: -20px;
   margin-top: -10px;
@@ -19,10 +20,12 @@ body {
 .nav-bar li {
   margin: 5px;
   list-style-type: none;
+  padding-top: 8px;
 }
 
 .nav-bar a {
   text-decoration: none;
+  color: #262626;
 }
 
 div.pageTitle {
@@ -41,7 +44,7 @@ div.form {
 
 a:hover {
     color: #a93384;
-    font-size: 105%;
+    font-size: 100%;
 }
 
 .new {
@@ -76,6 +79,7 @@ letter-spacing: .1em;
 border-radius: 2px;
 padding: 4px;
 text-decoration: none;
+color: #262626;
 }
 
 .custButtons{
@@ -94,4 +98,67 @@ margin-top: 10px;
 
 form {
   font-size: 1.1em;
+}
+
+.cancelbutton{
+  background-color: red;
+  color: white;
+  text-decoration: none;
+  border-radius: 2px;
+  padding: 4px;
+}
+
+.cancelDiv {
+  display: inline-flex;
+  padding-top: 10px;
+}
+
+.saveButton {
+  background-color: green;
+  color: white;
+  text-decoration: none;
+  border-radius: 2px;
+  padding: 3px;
+  font-size: 13px;
+}
+
+.saveButtonIndex {
+  background-color: green;
+  color: white;
+  text-decoration: none;
+  border-radius: 2px;
+  padding: 6px;
+  font-size: 14px;
+}
+
+input.cancelButton {
+  background-color: red;
+  color: white;
+  text-decoration: none;
+  border-radius: 2px;
+  padding: 4px;
+}
+
+.editButton{
+  text-decoration: none;
+  color: #0066ff;
+}
+
+select{
+  font-size: .8em;
+}
+
+.inputBox{
+  font-size: .8em;
+}
+
+
+input#date.inputBox {
+  font-size: .9em;
+}
+
+.bookingsLink {
+  color: #e6e6e6;
+  text-decoration: none;
+
 }
